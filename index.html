@@ -1,0 +1,3297 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>MACHIAVELLIFY — The Apex Architecture of Power, Fear & Realpolitik</title>
+  <meta name="description" content="Cast aside the sheep costume. Master Niccolò Machiavelli's principles of power dynamics, psychological leverage, strategic deception, and sovereign authority across corporate, business, academic, and bureaucratic arenas." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Cinzel', 'Georgia', 'serif'],
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            obsidian: {
+              950: '#070709',
+              900: '#0c0d12',
+              800: '#13151f',
+              700: '#1c1f2e',
+            },
+            crimson: {
+              950: '#2a060b',
+              900: '#4c0519',
+              700: '#9f1239',
+              600: '#be123c',
+              500: '#e11d48',
+              400: '#fb7185',
+            },
+            gold: {
+              600: '#b45309',
+              500: '#d97706',
+              400: '#f59e0b',
+              300: '#fcd34d',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background-color: #070709;
+      color: #e2e8f0;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      overflow-x: hidden;
+      width: 100%;
+    }
+    .font-cinzel { font-family: 'Cinzel', Georgia, serif; }
+    .font-mono-code { font-family: 'JetBrains Mono', monospace; }
+    .bg-grid-pattern {
+      background-image:
+        linear-gradient(to right, rgba(217, 119, 6, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(225, 29, 72, 0.05) 1px, transparent 1px);
+      background-size: 36px 36px;
+    }
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #fcd34d 0%, #f59e0b 45%, #fb7185 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .crimson-glow {
+      box-shadow: 0 0 35px -5px rgba(225, 29, 72, 0.35);
+    }
+    .gold-glow {
+      box-shadow: 0 0 30px -5px rgba(245, 158, 11, 0.3);
+    }
+    .card-surface {
+      background: linear-gradient(180deg, rgba(19, 21, 31, 0.92) 0%, rgba(12, 13, 18, 0.98) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .card-surface:hover {
+      border-color: rgba(245, 158, 11, 0.35);
+      transform: translateY(-2px);
+    }
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #070709; }
+    ::-webkit-scrollbar-thumb { background: #26293c; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #be123c; }
+    /* Range Slider Styling */
+    input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 6px;
+      background: #1c1f2e;
+      border-radius: 999px;
+      outline: none;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #f59e0b;
+      border: 2px solid #070709;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(245, 158, 11, 0.6);
+    }
+    .pyramid-tier {
+      clip-path: polygon(4% 0%, 96% 0%, 100% 100%, 0% 100%);
+      transition: all 0.25s ease;
+    }
+    @media (max-width: 640px) {
+      .pyramid-tier { clip-path: none; }
+    }
+  </style>
+</head>
+<body class="bg-obsidian-950 text-slate-200 antialiased selection:bg-crimson-600 selection:text-white min-h-screen flex flex-col">
+
+  <!-- TOP IMPERIAL TICKER BAR -->
+  <div class="bg-gradient-to-r from-obsidian-900 via-crimson-950 to-obsidian-900 border-b border-white/10 text-xs py-2 px-3 sm:px-6">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-2 text-amber-300 font-mono-code">
+        <span class="inline-block w-2 h-2 rounded-full bg-crimson-500 animate-pulse"></span>
+        <span class="uppercase tracking-widest font-semibold">DOCTRINE XVII:</span>
+        <span id="topMaximTicker" class="text-slate-300 truncate max-w-[230px] sm:max-w-md md:max-w-xl">"It is much safer to be feared than loved, when of the two, either must be dispensed with." — Niccolò Machiavelli</span>
+      </div>
+      <div class="flex items-center gap-3 ml-auto text-[11px] font-mono-code">
+        <span class="hidden md:inline text-slate-400">MINDSET INDEX: <strong id="headerMindsetRank" class="text-amber-400">ASCENDANT WOLF</strong></span>
+        <button type="button" id="openVaultQuickBtn" class="text-amber-300 hover:text-white underline underline-offset-4 transition">
+          Vault (<span id="savedVaultCount">0</span>)
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- STICKY NAVIGATION HEADER -->
+  <header class="sticky top-0 z-40 bg-obsidian-950/90 backdrop-blur-xl border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-2 sm:gap-4">
+      <!-- Brand Logo -->
+      <a href="#heroSection" class="flex items-center gap-2.5 sm:gap-3 group shrink-0">
+        <div class="w-9 h-9 sm:w-11 sm:h-11 rounded-lg bg-gradient-to-br from-crimson-700 via-crimson-900 to-obsidian-900 border border-amber-500/40 flex items-center justify-center shadow-lg group-hover:border-amber-400 transition">
+          <svg class="w-5 h-5 sm:w-6 sm:h-6 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 2L15.5 8.5L22 9.5L17 14.5L18.5 21.5L12 18L5.5 21.5L7 14.5L2 9.5L8.5 8.5L12 2Z"/>
+            <circle cx="12" cy="12" r="3" fill="currentColor"/>
+          </svg>
+        </div>
+        <div>
+          <span class="font-cinzel text-lg sm:text-xl font-black tracking-wider text-white block leading-none">MACHIAVELLI<span class="text-crimson-500">FY</span></span>
+          <span class="text-[9px] sm:text-[10px] font-mono-code uppercase tracking-widest text-amber-400/90 block mt-0.5">Apex Power &amp; Realpolitik</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="hidden xl:flex items-center gap-1 text-xs font-medium uppercase tracking-wider">
+        <a href="#arenasSection" class="px-3 py-2 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-white/5 transition">Arenas</a>
+        <a href="#cornerSection" class="px-3 py-2 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-white/5 transition">Machiavelli's Corner</a>
+        <a href="#gamesSection" class="px-3 py-2 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-white/5 transition">War Games</a>
+        <a href="#blogSection" class="px-3 py-2 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-white/5 transition">Blog Dossiers</a>
+        <a href="#counsellingSection" class="px-3 py-2 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-white/5 transition">Counselling</a>
+        <a href="#aboutSection" class="px-3 py-2 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-white/5 transition">Manifesto</a>
+        <a href="#contactSection" class="px-3 py-2 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-white/5 transition">Dispatch</a>
+      </nav>
+
+      <!-- Header Right Controls: Quick Omnisearch Trigger + Login/Citadel Button + Mobile Menu Button -->
+      <div class="flex items-center gap-2">
+        <button type="button" id="headerSearchBtn" class="flex items-center gap-2 px-2.5 sm:px-3.5 py-2 rounded-lg bg-obsidian-800 hover:bg-obsidian-700 border border-white/10 text-xs text-slate-300 transition" title="Open Central Command Search">
+          <svg class="w-4 h-4 text-amber-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          <span class="hidden sm:inline">Command Search</span>
+          <kbd class="hidden md:inline-block px-1.5 py-0.5 text-[10px] font-mono-code bg-obsidian-950 text-slate-400 rounded border border-white/10">Ctrl+K</kbd>
+        </button>
+
+        <button type="button" id="openAuthModalBtn" class="px-3 sm:px-4 py-2 rounded-lg bg-gradient-to-r from-crimson-700 to-crimson-600 hover:from-crimson-600 hover:to-crimson-500 text-white font-semibold text-xs uppercase tracking-wider shadow-md border border-crimson-400/30 transition flex items-center gap-1.5 shrink-0">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+          <span id="authHeaderBtnLabel">Inner Circle Login</span>
+        </button>
+
+        <button type="button" id="mobileMenuBtn" class="xl:hidden p-2 rounded-lg bg-obsidian-800 border border-white/10 text-slate-200 hover:text-amber-400" aria-label="Toggle Menu">
+          <svg id="mobileMenuIconOpen" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Responsive Navigation Drawer -->
+    <div id="mobileNavDrawer" class="hidden xl:hidden bg-obsidian-900 border-b border-white/10 px-4 pt-3 pb-5 space-y-2">
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs font-semibold uppercase tracking-wider">
+        <a href="#centralSearchAnchor" class="mobile-nav-link px-3 py-2.5 rounded-lg bg-obsidian-800 text-amber-400 border border-amber-500/20">Central Search</a>
+        <a href="#arenasSection" class="mobile-nav-link px-3 py-2.5 rounded-lg bg-obsidian-800 text-slate-200 hover:text-amber-400">Real-World Arenas</a>
+        <a href="#cornerSection" class="mobile-nav-link px-3 py-2.5 rounded-lg bg-obsidian-800 text-slate-200 hover:text-amber-400">Machiavelli's Corner</a>
+        <a href="#gamesSection" class="mobile-nav-link px-3 py-2.5 rounded-lg bg-obsidian-800 text-slate-200 hover:text-amber-400">Strategic Games</a>
+        <a href="#blogSection" class="mobile-nav-link px-3 py-2.5 rounded-lg bg-obsidian-800 text-slate-200 hover:text-amber-400">Blog Dossiers</a>
+        <a href="#counsellingSection" class="mobile-nav-link px-3 py-2.5 rounded-lg bg-obsidian-800 text-slate-200 hover:text-amber-400">Counselling</a>
+        <a href="#aboutSection" class="mobile-nav-link px-3 py-2.5 rounded-lg bg-obsidian-800 text-slate-200 hover:text-amber-400">Manifesto &amp; About</a>
+        <a href="#contactSection" class="mobile-nav-link px-3 py-2.5 rounded-lg bg-obsidian-800 text-slate-200 hover:text-amber-400">Contact Dispatch</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-1">
+    <!-- HERO SECTION & CENTRAL SEARCH COMMAND BAR -->
+    <section id="heroSection" class="relative overflow-hidden bg-grid-pattern pt-8 pb-16 sm:py-20 border-b border-white/10">
+      <!-- Radial ambient lighting -->
+      <div class="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[90vw] max-w-4xl h-96 bg-crimson-600/15 blur-[130px] rounded-full"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          <!-- Left Column: Hero Manifesto -->
+          <div class="lg:col-span-7 space-y-6 text-left">
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-crimson-950/90 border border-crimson-500/40 text-crimson-300 text-xs font-mono-code uppercase tracking-widest">
+              <span>⚡ THE SOVEREIGN DOCTRINE</span>
+              <span class="text-amber-400">•</span>
+              <span>FLORENCE 1513 → MODERN CITADEL</span>
+            </div>
+
+            <h1 class="font-cinzel text-3xl sm:text-5xl xl:text-6xl font-black tracking-tight text-white leading-[1.12]">
+              SHED THE SHEEP COSTUME. <br class="hidden sm:inline" />
+              <span class="gold-gradient-text">ASCEND AS THE APEX WOLF.</span>
+            </h1>
+
+            <p class="text-slate-300 text-sm sm:text-base lg:text-lg leading-relaxed max-w-2xl">
+              The world does not run on kindness, abstract benevolence, or moral fairy tales. It operates on <strong class="text-white">asymmetric leverage, psychological dominance, calculated fear, and structural self-interest</strong>. <span class="text-amber-400 font-semibold">Machiavellify</span> is the definitive citadel for mastering dark psychology, nuanced deception, and Florentine statecraft across corporate hierarchies, boardrooms, universities, and bureaucracies.
+            </p>
+
+            <!-- Hero CTAs -->
+            <div class="flex flex-wrap items-center gap-3 pt-2">
+              <a href="#arenasSection" class="px-5 sm:px-6 py-3.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-obsidian-950 font-bold text-xs sm:text-sm uppercase tracking-wider shadow-lg transition flex items-center gap-2">
+                <span>Enter Real-World Arenas</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+              </a>
+              <a href="#gamesSection" class="px-5 sm:px-6 py-3.5 rounded-xl bg-obsidian-800 hover:bg-obsidian-700 text-white border border-crimson-500/40 font-semibold text-xs sm:text-sm uppercase tracking-wider transition flex items-center gap-2">
+                <span>Play Strategic Simulators</span>
+              </a>
+              <button type="button" id="heroQuickAuditBtn" class="px-4 py-3.5 rounded-xl bg-white/5 hover:bg-white/10 text-amber-300 border border-white/10 text-xs sm:text-sm font-mono-code transition">
+                Take Sheep-to-Wolf Audit →
+              </button>
+            </div>
+
+            <!-- 4 Core Pillar Badges -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4">
+              <div class="p-3 rounded-xl bg-obsidian-900/90 border border-white/10">
+                <div class="text-amber-400 font-cinzel font-bold text-lg sm:text-xl">FEAR &gt; LOVE</div>
+                <div class="text-[11px] text-slate-400 mt-0.5">Dread of punishment never fails when obligation breaks</div>
+              </div>
+              <div class="p-3 rounded-xl bg-obsidian-900/90 border border-white/10">
+                <div class="text-crimson-400 font-cinzel font-bold text-lg sm:text-xl">LION &amp; FOX</div>
+                <div class="text-[11px] text-slate-400 mt-0.5">Detect every snare; overwhelm every rival coalition</div>
+              </div>
+              <div class="p-3 rounded-xl bg-obsidian-900/90 border border-white/10">
+                <div class="text-amber-400 font-cinzel font-bold text-lg sm:text-xl">5 ARENAS</div>
+                <div class="text-[11px] text-slate-400 mt-0.5">Corporate, Business, College, Workplace &amp; Bureaucracy</div>
+              </div>
+              <div class="p-3 rounded-xl bg-obsidian-900/90 border border-white/10">
+                <div class="text-crimson-400 font-cinzel font-bold text-lg sm:text-xl">3 WAR GAMES</div>
+                <div class="text-[11px] text-slate-400 mt-0.5">Live tactical engines for testing ruthless decisions</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Interactive Sovereign Crest & Live Mindset Telemetry Card -->
+          <div class="lg:col-span-5">
+            <div class="card-surface rounded-2xl p-5 sm:p-6 border border-amber-500/30 crimson-glow relative overflow-hidden">
+              <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-4">
+                <div>
+                  <span class="text-[10px] font-mono-code uppercase tracking-widest text-crimson-400 block">REALPOLITIK TELEMETRY</span>
+                  <h2 class="font-cinzel text-lg sm:text-xl font-bold text-white">THE PYRAMID OF POWER</h2>
+                </div>
+                <span class="px-2.5 py-1 rounded bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-mono-code">INTERACTIVE</span>
+              </div>
+
+              <p class="text-xs text-slate-400 mb-4">
+                Click any stratum of the hierarchy below to inspect how the elite 1% engineer compliance, blur lines to neutralize protest, and harvest value from the lower tiers.
+              </p>
+
+              <!-- Interactive 5-Tier Pyramid Visualizer -->
+              <div id="pyramidVisualizer" class="space-y-2 mb-5">
+                <!-- Populated dynamically by JS -->
+              </div>
+
+              <!-- Selected Pyramid Tier Details Box -->
+              <div id="pyramidDetailBox" class="p-4 rounded-xl bg-obsidian-950 border border-amber-500/30 space-y-2">
+                <!-- Populated dynamically by JS -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CENTRAL COMMAND SEARCH BAR (OMNISEARCH HUB) -->
+        <div id="centralSearchAnchor" class="mt-12 sm:mt-16">
+          <div class="card-surface rounded-2xl p-4 sm:p-6 border border-amber-500/40 gold-glow">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-3">
+              <div class="flex items-center gap-2">
+                <span class="px-2 py-0.5 rounded bg-crimson-600 text-white font-mono-code text-[10px] uppercase font-semibold">CENTRAL INTELLIGENCE BAR</span>
+                <h2 class="font-cinzel text-sm sm:text-base font-bold text-white">Query Doctrines, Corporate Playbooks, Manipulation Tactics &amp; Simulators</h2>
+              </div>
+              <div class="text-xs text-slate-400 font-mono-code">
+                <span id="centralSearchResultCount">Showing quick-access intelligence</span>
+              </div>
+            </div>
+
+            <div class="relative flex flex-col sm:flex-row gap-2">
+              <div class="relative flex-1">
+                <svg class="w-5 h-5 text-amber-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                </svg>
+                <input
+                  type="text"
+                  id="centralSearchInput"
+                  placeholder="Search e.g. 'fear vs love', 'corporate office', 'suppress protests', 'bureaucracy', 'college', 'gaslighting', 'fox'..."
+                  class="w-full pl-11 pr-10 py-3.5 rounded-xl bg-obsidian-950 border border-white/15 focus:border-amber-400 focus:outline-none text-sm text-white placeholder-slate-500"
+                />
+                <button type="button" id="clearCentralSearchBtn" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white text-xs px-1.5 py-0.5 rounded bg-obsidian-800">
+                  ESC
+                </button>
+              </div>
+              <select id="centralSearchCategory" aria-label="Filter search category" class="px-4 py-3.5 rounded-xl bg-obsidian-950 border border-white/15 text-xs sm:text-sm text-slate-200 focus:border-amber-400 focus:outline-none">
+                <option value="all">All Intelligence (Arenas, Maxims, Blog, Games)</option>
+                <option value="arena">Real-World Arenas</option>
+                <option value="maxim">Machiavelli's Corner Maxims</option>
+                <option value="blog">Tactical Blog Dossiers</option>
+                <option value="game">War Games &amp; Simulators</option>
+                <option value="counselling">Advisory &amp; Counselling</option>
+              </select>
+            </div>
+
+            <!-- Quick Filter Chips -->
+            <div class="flex flex-wrap items-center gap-1.5 mt-3">
+              <span class="text-[11px] font-mono-code text-slate-400 mr-1">Instant Tags:</span>
+              <button type="button" data-search-tag="fear" class="search-chip px-2.5 py-1 rounded-md bg-obsidian-800 hover:bg-crimson-900/60 border border-white/10 text-xs text-slate-300 transition">#FearOverLove</button>
+              <button type="button" data-search-tag="corporate" class="search-chip px-2.5 py-1 rounded-md bg-obsidian-800 hover:bg-crimson-900/60 border border-white/10 text-xs text-slate-300 transition">#CorporateOffice</button>
+              <button type="button" data-search-tag="protest" class="search-chip px-2.5 py-1 rounded-md bg-obsidian-800 hover:bg-crimson-900/60 border border-white/10 text-xs text-slate-300 transition">#SuppressDissent</button>
+              <button type="button" data-search-tag="bureaucracy" class="search-chip px-2.5 py-1 rounded-md bg-obsidian-800 hover:bg-crimson-900/60 border border-white/10 text-xs text-slate-300 transition">#Bureaucracy</button>
+              <button type="button" data-search-tag="college" class="search-chip px-2.5 py-1 rounded-md bg-obsidian-800 hover:bg-crimson-900/60 border border-white/10 text-xs text-slate-300 transition">#SchoolAndCollege</button>
+              <button type="button" data-search-tag="business" class="search-chip px-2.5 py-1 rounded-md bg-obsidian-800 hover:bg-crimson-900/60 border border-white/10 text-xs text-slate-300 transition">#BusinessMonopoly</button>
+              <button type="button" data-search-tag="deception" class="search-chip px-2.5 py-1 rounded-md bg-obsidian-800 hover:bg-crimson-900/60 border border-white/10 text-xs text-slate-300 transition">#NuancedDeception</button>
+            </div>
+
+            <!-- Live Search Results Drawer -->
+            <div id="centralSearchResults" class="hidden mt-4 pt-4 border-t border-white/10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 max-h-96 overflow-y-auto">
+              <!-- Populated dynamically when user searches or clicks a tag -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- SECTION 1: REAL-WORLD POWER ARENAS (Corporate, Business, College, Workplace, Bureaucracy) -->
+    <section id="arenasSection" class="py-16 sm:py-24 border-b border-white/10 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+          <div>
+            <span class="text-xs font-mono-code uppercase tracking-widest text-crimson-400 block mb-2">REAL-WORLD APPLIED REALPOLITIK</span>
+            <h2 class="font-cinzel text-2xl sm:text-4xl font-black text-white">FIVE THEATERS OF DOMINION</h2>
+            <p class="text-slate-400 text-sm sm:text-base mt-2 max-w-3xl">
+              Kindness in competitive hierarchies is interpreted as weakness. Select your active environment below to contrast the <span class="text-slate-300 underline decoration-crimson-500">Sheep Delusion</span> against the <span class="text-amber-400 font-semibold">Machiavellian Predator Protocol</span>.
+            </p>
+          </div>
+          <!-- Arena Selector Tabs -->
+          <div id="arenaTabsContainer" class="flex flex-wrap gap-2">
+            <!-- Populated dynamically by JS -->
+          </div>
+        </div>
+
+        <!-- Active Arena Deep-Dive Display -->
+        <div id="arenaDetailView" class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+          <!-- Populated dynamically by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: MACHIAVELLI'S CORNER (Codex of The Prince + Interactive Fear/Power Telemetry Calculator) -->
+    <section id="cornerSection" class="py-16 sm:py-24 bg-obsidian-900/60 border-b border-white/10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <span class="text-xs font-mono-code uppercase tracking-widest text-amber-400 block mb-2">SANCTUM SANCTORUM • FLORENCE 1513</span>
+          <h2 class="font-cinzel text-2xl sm:text-4xl font-black text-white">MACHIAVELLI'S CORNER</h2>
+          <p class="text-slate-400 text-sm sm:text-base mt-3">
+            Unvarnished canons from <em>Il Principe</em> (The Prince) and <em>Discourses on Livy</em>. Here we dissect why love is an abstract chain broken at the first convenience of self-interest, whereas dread of punishment is permanent steel.
+          </p>
+        </div>
+
+        <!-- Interactive Fear vs. Love & Power Telemetry Simulator -->
+        <div class="card-surface rounded-2xl p-5 sm:p-8 border border-amber-500/30 mb-14">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div class="lg:col-span-6 space-y-5">
+              <div class="flex items-center justify-between border-b border-white/10 pb-3">
+                <div>
+                  <span class="text-[11px] font-mono-code text-crimson-400 uppercase tracking-widest block">INTERACTIVE DOCTRINE LAB</span>
+                  <h3 class="font-cinzel text-xl font-bold text-white">Fear vs. Love &amp; Dissent Suppression Matrix</h3>
+                </div>
+                <button type="button" id="resetTelemetryBtn" class="px-3 py-1 rounded bg-obsidian-800 hover:bg-obsidian-700 text-xs text-amber-400 border border-white/10 transition">
+                  Optimal Preset
+                </button>
+              </div>
+
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Adjust the five structural levers of your domain below. Observe how excessive benevolence invites mutiny, while strategic ambiguity ("blurring the line") and calibrated dread neutralize opposition before protests can coalesce.
+              </p>
+
+              <!-- 5 Interactive Sliders -->
+              <div class="space-y-4">
+                <div>
+                  <div class="flex justify-between text-xs mb-1">
+                    <span class="font-medium text-slate-200">1. Calibrated Dread &amp; Consequence Certainty (Fear)</span>
+                    <span id="valFearSlider" class="font-mono-code text-amber-400 font-bold">85%</span>
+                  </div>
+                  <input type="range" id="sliderFear" min="0" max="100" value="85" />
+                </div>
+
+                <div>
+                  <div class="flex justify-between text-xs mb-1">
+                    <span class="font-medium text-slate-200">2. Perceived Benevolence &amp; Unconditional Leniency (Love)</span>
+                    <span id="valLoveSlider" class="font-mono-code text-crimson-400 font-bold">25%</span>
+                  </div>
+                  <input type="range" id="sliderLove" min="0" max="100" value="25" />
+                </div>
+
+                <div>
+                  <div class="flex justify-between text-xs mb-1">
+                    <span class="font-medium text-slate-200">3. Strategic Ambiguity &amp; Line-Blurring (Anti-Protest Shield)</span>
+                    <span id="valBlurSlider" class="font-mono-code text-amber-400 font-bold">90%</span>
+                  </div>
+                  <input type="range" id="sliderBlur" min="0" max="100" value="90" />
+                </div>
+
+                <div>
+                  <div class="flex justify-between text-xs mb-1">
+                    <span class="font-medium text-slate-200">4. Resource &amp; Career Dependency of Subordinates</span>
+                    <span id="valDepSlider" class="font-mono-code text-amber-400 font-bold">80%</span>
+                  </div>
+                  <input type="range" id="sliderDep" min="0" max="100" value="80" />
+                </div>
+
+                <div>
+                  <div class="flex justify-between text-xs mb-1">
+                    <span class="font-medium text-slate-200">5. Intelligence Asymmetry &amp; System Mastery (Fox Index)</span>
+                    <span id="valFoxSlider" class="font-mono-code text-amber-400 font-bold">88%</span>
+                  </div>
+                  <input type="range" id="sliderFox" min="0" max="100" value="88" />
+                </div>
+              </div>
+
+              <!-- Live Computed Verdict Box -->
+              <div id="telemetryVerdictBox" class="p-4 rounded-xl bg-obsidian-950 border border-white/10 space-y-2">
+                <!-- Populated dynamically -->
+              </div>
+            </div>
+
+            <!-- Right Column: Chart.js Radar + Metrics -->
+            <div class="lg:col-span-6 flex flex-col justify-between space-y-4">
+              <div class="grid grid-cols-3 gap-3 text-center">
+                <div class="p-3 rounded-xl bg-obsidian-950 border border-white/10">
+                  <div class="text-[10px] font-mono-code uppercase text-slate-400">SOVEREIGN CONTROL</div>
+                  <div id="metricControlScore" class="font-cinzel text-xl sm:text-2xl font-black text-amber-400 mt-1">92/100</div>
+                </div>
+                <div class="p-3 rounded-xl bg-obsidian-950 border border-white/10">
+                  <div class="text-[10px] font-mono-code uppercase text-slate-400">MUTINY / PROTEST RISK</div>
+                  <div id="metricMutinyRisk" class="font-cinzel text-xl sm:text-2xl font-black text-emerald-400 mt-1">6%</div>
+                </div>
+                <div class="p-3 rounded-xl bg-obsidian-950 border border-white/10">
+                  <div class="text-[10px] font-mono-code uppercase text-slate-400">RULER ARCHETYPE</div>
+                  <div id="metricArchetype" class="font-cinzel text-sm sm:text-base font-bold text-crimson-400 mt-2 truncate">THE LION-FOX</div>
+                </div>
+              </div>
+
+              <div class="relative h-72 sm:h-80 w-full bg-obsidian-950/80 rounded-xl p-3 border border-white/10">
+                <canvas id="machiavelliRadarChart"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Filterable Grid of 12 Canonical Machiavellian Maxims -->
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-6">
+          <h3 class="font-cinzel text-xl sm:text-2xl font-bold text-white">The Twelve Florentine Laws of Power</h3>
+          <div class="flex flex-wrap gap-2" id="maximCategoryFilters">
+            <button type="button" data-maxim-filter="all" class="maxim-filter-btn px-3 py-1.5 rounded-lg bg-crimson-600 text-white text-xs font-semibold">All Laws (12)</button>
+            <button type="button" data-maxim-filter="Fear & Authority" class="maxim-filter-btn px-3 py-1.5 rounded-lg bg-obsidian-800 text-slate-300 hover:text-white text-xs">Fear &amp; Authority</button>
+            <button type="button" data-maxim-filter="Deception & Optics" class="maxim-filter-btn px-3 py-1.5 rounded-lg bg-obsidian-800 text-slate-300 hover:text-white text-xs">Deception &amp; Optics</button>
+            <button type="button" data-maxim-filter="Crushing Dissent" class="maxim-filter-btn px-3 py-1.5 rounded-lg bg-obsidian-800 text-slate-300 hover:text-white text-xs">Crushing Dissent</button>
+            <button type="button" data-maxim-filter="Strategy & Warfare" class="maxim-filter-btn px-3 py-1.5 rounded-lg bg-obsidian-800 text-slate-300 hover:text-white text-xs">Strategy &amp; Warfare</button>
+          </div>
+        </div>
+
+        <div id="maximsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <!-- Populated dynamically by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: STRATEGIC GAMES & LIVE WAR ROOM SIMULATORS -->
+    <section id="gamesSection" class="py-16 sm:py-24 border-b border-white/10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+          <div>
+            <span class="text-xs font-mono-code uppercase tracking-widest text-crimson-400 block mb-2">PSYCHOLOGICAL WARFARE TRAINING GROUNDS</span>
+            <h2 class="font-cinzel text-2xl sm:text-4xl font-black text-white">MACHIAVELLIAN WAR GAMES</h2>
+            <p class="text-slate-400 text-sm sm:text-base mt-2 max-w-2xl">
+              Theory without execution is academic vanity. Sharpen your predatory instincts across three interactive combat simulators below.
+            </p>
+          </div>
+
+          <!-- Game Switcher Tabs -->
+          <div class="flex flex-wrap gap-2">
+            <button type="button" data-game-tab="gambit" class="game-tab-btn px-4 py-2.5 rounded-xl bg-amber-500 text-obsidian-950 font-bold text-xs uppercase tracking-wider transition">
+              1. The Sovereign's Gambit (Board Game)
+            </button>
+            <button type="button" data-game-tab="intrigue" class="game-tab-btn px-4 py-2.5 rounded-xl bg-obsidian-800 text-slate-200 hover:bg-obsidian-700 border border-white/10 font-semibold text-xs uppercase tracking-wider transition">
+              2. Realpolitik Dilemma Engine
+            </button>
+            <button type="button" data-game-tab="gauntlet" class="game-tab-btn px-4 py-2.5 rounded-xl bg-obsidian-800 text-slate-200 hover:bg-obsidian-700 border border-white/10 font-semibold text-xs uppercase tracking-wider transition">
+              3. Dark Psychology Gauntlet
+            </button>
+          </div>
+        </div>
+
+        <!-- GAME 1: THE SOVEREIGN'S GAMBIT (Interactive HTML5 Canvas Tactical Grid) -->
+        <div id="gamePanelGambit" class="game-panel card-surface rounded-2xl p-4 sm:p-7 border border-amber-500/30">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+            <!-- Left Column: Canvas Board -->
+            <div class="lg:col-span-7 flex flex-col items-center">
+              <div class="w-full flex flex-wrap items-center justify-between gap-2 mb-3">
+                <div class="flex items-center gap-2">
+                  <span class="px-2.5 py-1 rounded bg-amber-500/20 border border-amber-500/40 text-amber-300 font-mono-code text-xs font-bold">TURN <span id="gambitTurnText">1/25</span></span>
+                  <span id="gambitStatusBadge" class="px-2.5 py-1 rounded bg-obsidian-800 text-slate-200 text-xs font-mono-code">YOUR MOVE: Command the Prince</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <button type="button" id="gambitSoundToggleBtn" class="px-2.5 py-1.5 rounded-lg bg-obsidian-800 hover:bg-obsidian-700 border border-white/10 text-xs text-slate-300 font-mono-code">
+                    🔊 Audio: ON
+                  </button>
+                  <button type="button" id="gambitRestartBtn" class="px-3 py-1.5 rounded-lg bg-crimson-600 hover:bg-crimson-500 text-white text-xs font-semibold uppercase tracking-wider">
+                    New Campaign
+                  </button>
+                </div>
+              </div>
+
+              <!-- Responsive Canvas Wrapper -->
+              <div id="gambitCanvasContainer" class="w-full max-w-[520px] aspect-square bg-obsidian-950 rounded-xl border-2 border-amber-500/40 overflow-hidden shadow-2xl relative">
+                <canvas id="sovereignGambitCanvas" class="w-full h-full block cursor-pointer touch-manipulation"></canvas>
+              </div>
+
+              <!-- On-Screen Touch / Mobile Directional & Tactical Ability Controls -->
+              <div class="w-full max-w-[520px] mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <!-- D-Pad Controls -->
+                <div class="p-3 rounded-xl bg-obsidian-950 border border-white/10 flex flex-col items-center justify-center">
+                  <span class="text-[10px] font-mono-code uppercase text-slate-400 mb-2">Move Sovereign (Arrow Keys / WASD / Tap)</span>
+                  <div class="grid grid-cols-3 gap-1.5 w-36">
+                    <div></div>
+                    <button type="button" data-gambit-dir="up" class="gambit-dir-btn p-2.5 rounded-lg bg-obsidian-800 hover:bg-amber-500 hover:text-obsidian-950 text-white font-bold text-xs border border-white/10">▲</button>
+                    <div></div>
+                    <button type="button" data-gambit-dir="left" class="gambit-dir-btn p-2.5 rounded-lg bg-obsidian-800 hover:bg-amber-500 hover:text-obsidian-950 text-white font-bold text-xs border border-white/10">◀</button>
+                    <button type="button" data-gambit-dir="wait" class="gambit-dir-btn p-2.5 rounded-lg bg-obsidian-900 hover:bg-obsidian-700 text-amber-400 font-mono-code text-[10px] border border-white/10">HOLD</button>
+                    <button type="button" data-gambit-dir="right" class="gambit-dir-btn p-2.5 rounded-lg bg-obsidian-800 hover:bg-amber-500 hover:text-obsidian-950 text-white font-bold text-xs border border-white/10">▶</button>
+                    <div></div>
+                    <button type="button" data-gambit-dir="down" class="gambit-dir-btn p-2.5 rounded-lg bg-obsidian-800 hover:bg-amber-500 hover:text-obsidian-950 text-white font-bold text-xs border border-white/10">▼</button>
+                    <div></div>
+                  </div>
+                </div>
+
+                <!-- Special Machiavellian Decrees -->
+                <div class="p-3 rounded-xl bg-obsidian-950 border border-white/10 flex flex-col justify-between space-y-2">
+                  <span class="text-[10px] font-mono-code uppercase text-slate-400">Special Decrees (Hotkeys 1 &amp; 2)</span>
+                  <button type="button" id="gambitFoxTrapBtn" class="w-full py-2 px-3 rounded-lg bg-amber-500/15 hover:bg-amber-500/30 border border-amber-500/40 text-amber-300 text-xs font-semibold flex items-center justify-between">
+                    <span>🦊 Deploy Fox Deception Snare</span>
+                    <span id="gambitFoxCharges" class="font-mono-code text-[11px] bg-obsidian-900 px-1.5 py-0.5 rounded">3 left</span>
+                  </button>
+                  <button type="button" id="gambitLionDecreeBtn" class="w-full py-2 px-3 rounded-lg bg-crimson-600/20 hover:bg-crimson-600/35 border border-crimson-500/40 text-crimson-300 text-xs font-semibold flex items-center justify-between">
+                    <span>🦁 Unleash Lion Fear Purge</span>
+                    <span id="gambitLionCharges" class="font-mono-code text-[11px] bg-obsidian-900 px-1.5 py-0.5 rounded">2 left</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Column: Game Rules, Live Score Telemetry & Battle Log -->
+            <div class="lg:col-span-5 space-y-4">
+              <div>
+                <span class="text-xs font-mono-code uppercase text-amber-400">TACTICAL BRIEFING</span>
+                <h3 class="font-cinzel text-xl font-bold text-white mt-0.5">The Sovereign's Gambit: Citadel Control</h3>
+                <p class="text-xs sm:text-sm text-slate-300 mt-2 leading-relaxed">
+                  Command the <strong class="text-amber-400">Crown Prince (Gold)</strong> across the 8×8 Florentine Citadel. Capture <strong class="text-emerald-400">Treasury &amp; Influence Nodes (Green Diamonds)</strong> while suppressing <strong class="text-crimson-400">Conspirator Rebels (Red Wolves)</strong> before Turn 25.
+                </p>
+              </div>
+
+              <!-- Live Telemetry Cards -->
+              <div class="grid grid-cols-3 gap-2.5 text-center">
+                <div class="p-3 rounded-xl bg-obsidian-950 border border-white/10">
+                  <div class="text-[10px] font-mono-code text-slate-400">POWER SCORE</div>
+                  <div id="gambitScoreVal" class="font-cinzel text-lg sm:text-xl font-black text-amber-400">0</div>
+                </div>
+                <div class="p-3 rounded-xl bg-obsidian-950 border border-white/10">
+                  <div class="text-[10px] font-mono-code text-slate-400">FEAR AURA</div>
+                  <div id="gambitFearVal" class="font-cinzel text-lg sm:text-xl font-black text-crimson-400">100%</div>
+                </div>
+                <div class="p-3 rounded-xl bg-obsidian-950 border border-white/10">
+                  <div class="text-[10px] font-mono-code text-slate-400">HIGH SCORE</div>
+                  <div id="gambitHighScoreVal" class="font-cinzel text-lg sm:text-xl font-black text-emerald-400">0</div>
+                </div>
+              </div>
+
+              <!-- Legend -->
+              <div class="p-3.5 rounded-xl bg-obsidian-950 border border-white/10 space-y-2 text-xs">
+                <div class="font-semibold text-white uppercase tracking-wider text-[11px] mb-1">Board Entities &amp; Mechanics:</div>
+                <div class="flex items-center gap-2 text-slate-300"><span class="w-3 h-3 rounded-full bg-amber-400 inline-block shrink-0"></span> <strong>Gold Crown (You):</strong> Click adjacent tiles or use Arrow/WASD keys to advance.</div>
+                <div class="flex items-center gap-2 text-slate-300"><span class="w-3 h-3 rotate-45 bg-emerald-400 inline-block shrink-0"></span> <strong>Influence Node (+150 pts):</strong> Seize institutions to expand your dominion.</div>
+                <div class="flex items-center gap-2 text-slate-300"><span class="w-3 h-3 rounded-full bg-crimson-500 inline-block shrink-0"></span> <strong>Rebel Faction:</strong> Moves each turn. Lure them into Fox Snares (+200 pts) or purge adjacent rebels with Lion Fear (+250 pts).</div>
+                <div class="flex items-center gap-2 text-slate-300"><span class="w-3 h-3 rounded bg-purple-500 inline-block shrink-0"></span> <strong>Fox Deception Snare:</strong> Invisible trap that converts any rebel stepping onto it into a loyal vassal.</div>
+              </div>
+
+              <!-- Live Combat Chronicle -->
+              <div class="p-3.5 rounded-xl bg-obsidian-950 border border-white/10">
+                <div class="text-[11px] font-mono-code uppercase text-amber-400 mb-2">FLORENTINE WAR CHRONICLE</div>
+                <div id="gambitBattleLog" class="space-y-1.5 text-xs text-slate-300 max-h-40 overflow-y-auto font-mono-code">
+                  <!-- Populated dynamically -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- GAME 2: COURT INTRIGUE & REALPOLITIK DILEMMA ENGINE -->
+        <div id="gamePanelIntrigue" class="game-panel hidden card-surface rounded-2xl p-5 sm:p-8 border border-amber-500/30">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            <div class="lg:col-span-4 space-y-4">
+              <span class="text-xs font-mono-code uppercase text-crimson-400">DECISION ENGINE</span>
+              <h3 class="font-cinzel text-xl sm:text-2xl font-bold text-white">Realpolitik Crisis Simulator</h3>
+              <p class="text-xs sm:text-sm text-slate-300">
+                Navigate 6 high-stakes crises across Corporate, Business, College, Bureaucracy, and Statecraft. If your <strong class="text-amber-400">Fear</strong> or <strong class="text-emerald-400">Leverage</strong> collapses—or if <strong class="text-crimson-400">Protest Risk</strong> hits 100%—you are deposed.
+              </p>
+
+              <!-- 4 Live Regime Bars -->
+              <div class="space-y-3 p-4 rounded-xl bg-obsidian-950 border border-white/10">
+                <div>
+                  <div class="flex justify-between text-xs mb-1"><span>🦁 Subordinate Dread (Fear)</span><span id="intrigueStatFear" class="font-mono-code text-amber-400">70%</span></div>
+                  <div class="w-full h-2 bg-obsidian-800 rounded-full overflow-hidden"><div id="intrigueBarFear" class="h-full bg-amber-500 transition-all" style="width:70%"></div></div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-xs mb-1"><span>🦊 Leverage &amp; Blackmail Capital</span><span id="intrigueStatLeverage" class="font-mono-code text-emerald-400">65%</span></div>
+                  <div class="w-full h-2 bg-obsidian-800 rounded-full overflow-hidden"><div id="intrigueBarLeverage" class="h-full bg-emerald-500 transition-all" style="width:65%"></div></div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-xs mb-1"><span>🎭 Public Optics &amp; Sanctimony</span><span id="intrigueStatOptics" class="font-mono-code text-sky-400">60%</span></div>
+                  <div class="w-full h-2 bg-obsidian-800 rounded-full overflow-hidden"><div id="intrigueBarOptics" class="h-full bg-sky-500 transition-all" style="width:60%"></div></div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-xs mb-1"><span>🔥 Unrest &amp; Protest Risk (Keep Low)</span><span id="intrigueStatProtest" class="font-mono-code text-crimson-400">20%</span></div>
+                  <div class="w-full h-2 bg-obsidian-800 rounded-full overflow-hidden"><div id="intrigueBarProtest" class="h-full bg-crimson-500 transition-all" style="width:20%"></div></div>
+                </div>
+              </div>
+
+              <button type="button" id="restartIntrigueBtn" class="w-full py-2.5 rounded-xl bg-obsidian-800 hover:bg-obsidian-700 border border-white/10 text-xs font-semibold uppercase tracking-wider text-amber-400">
+                Reset Campaign
+              </button>
+            </div>
+
+            <div class="lg:col-span-8">
+              <div id="intrigueStageContainer" class="p-5 sm:p-6 rounded-2xl bg-obsidian-950 border border-white/10 min-h-[340px] flex flex-col justify-between">
+                <!-- Populated dynamically by JS -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- GAME 3: DARK PSYCHOLOGY & MANIPULATION MASTERY GAUNTLET -->
+        <div id="gamePanelGauntlet" class="game-panel hidden card-surface rounded-2xl p-5 sm:p-8 border border-amber-500/30">
+          <div id="gauntletContainer" class="max-w-4xl mx-auto">
+            <!-- Populated dynamically by JS -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: THE FLORENTINE BLOG & TACTICAL DOSSIERS -->
+    <section id="blogSection" class="py-16 sm:py-24 bg-obsidian-900/50 border-b border-white/10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+          <div>
+            <span class="text-xs font-mono-code uppercase tracking-widest text-amber-400 block mb-2">INTELLIGENCE DISPATCHES &amp; CASE STUDIES</span>
+            <h2 class="font-cinzel text-2xl sm:text-4xl font-black text-white">THE MACHIAVELLIFY BLOG</h2>
+            <p class="text-slate-400 text-sm sm:text-base mt-2 max-w-2xl">
+              Field manuals on dark psychology, corporate ascendance, bureaucratic line-blurring, and neutralizing covert manipulators. Click any dossier to open the full reading mode.
+            </p>
+          </div>
+
+          <!-- Blog Category Filter Pills -->
+          <div class="flex flex-wrap gap-2" id="blogFilterContainer">
+            <button type="button" data-blog-cat="all" class="blog-cat-btn px-3 py-1.5 rounded-lg bg-amber-500 text-obsidian-950 font-bold text-xs">All Dossiers</button>
+            <button type="button" data-blog-cat="Corporate Warfare" class="blog-cat-btn px-3 py-1.5 rounded-lg bg-obsidian-800 text-slate-300 hover:text-white text-xs">Corporate Warfare</button>
+            <button type="button" data-blog-cat="Dark Psychology" class="blog-cat-btn px-3 py-1.5 rounded-lg bg-obsidian-800 text-slate-300 hover:text-white text-xs">Dark Psychology</button>
+            <button type="button" data-blog-cat="Bureaucracy & Statecraft" class="blog-cat-btn px-3 py-1.5 rounded-lg bg-obsidian-800 text-slate-300 hover:text-white text-xs">Bureaucracy</button>
+            <button type="button" data-blog-cat="Campus & Academia" class="blog-cat-btn px-3 py-1.5 rounded-lg bg-obsidian-800 text-slate-300 hover:text-white text-xs">College &amp; Campus</button>
+          </div>
+        </div>
+
+        <div id="blogGridContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Populated dynamically by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: STRATEGIC COUNSELLING & MINDSET TRANSFORMATION WAR ROOM -->
+    <section id="counsellingSection" class="py-16 sm:py-24 border-b border-white/10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <span class="text-xs font-mono-code uppercase tracking-widest text-crimson-400 block mb-2">BESPOKE CONSIGLIERE ADVISORY</span>
+          <h2 class="font-cinzel text-2xl sm:text-4xl font-black text-white">STRATEGIC COUNSELLING &amp; WAR ROOM</h2>
+          <p class="text-slate-400 text-sm sm:text-base mt-3">
+            Conventional therapy teaches you to accept powerlessness peacefully. <strong class="text-white">Machiavellian Counselling</strong> deprograms your sheep conditioning, audits your structural vulnerabilities, and architects a ruthless campaign for your specific workplace, enterprise, or institution.
+          </p>
+        </div>
+
+        <!-- Step 1: Interactive Mindset Vulnerability Diagnostic ("Sheep vs. Wolf Audit") -->
+        <div class="card-surface rounded-2xl p-5 sm:p-8 border border-crimson-500/30 mb-14">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            <div class="lg:col-span-5 space-y-4">
+              <span class="px-2.5 py-1 rounded bg-crimson-950 border border-crimson-500/40 text-crimson-300 text-xs font-mono-code uppercase">DIAGNOSTIC INSTRUMENT</span>
+              <h3 class="font-cinzel text-xl sm:text-2xl font-bold text-white">The Sheep-to-Predator Mindset Audit</h3>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Answer 5 rapid behavioral scenarios honest to your current habits. We calculate your <strong class="text-amber-400">Predator Quotient (PQ)</strong> and prescribe the exact doctrine required to eliminate your blind spots.
+              </p>
+              <div id="auditResultBox" class="p-4 rounded-xl bg-obsidian-950 border border-amber-500/30 space-y-2">
+                <div class="text-xs font-mono-code text-slate-400">CURRENT DIAGNOSTIC STATUS</div>
+                <div id="auditScoreDisplay" class="font-cinzel text-2xl font-black text-amber-400">Awaiting Calibration...</div>
+                <p id="auditPrescriptionText" class="text-xs text-slate-300">Select your responses on the right and click "Calculate Predator Quotient".</p>
+              </div>
+            </div>
+
+            <div class="lg:col-span-7 space-y-4">
+              <div id="auditQuestionsContainer" class="space-y-3">
+                <!-- Populated dynamically by JS -->
+              </div>
+              <button type="button" id="calculateAuditBtn" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-obsidian-950 font-bold text-xs sm:text-sm uppercase tracking-wider shadow-lg transition">
+                Calculate Predator Quotient &amp; Generate Prescription
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2: Advisory Tiers & Confidential Session Booking -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <!-- 3 Retainer Tiers -->
+          <div class="lg:col-span-7 space-y-4">
+            <div class="flex items-center justify-between">
+              <h3 class="font-cinzel text-xl font-bold text-white">Select Advisory Retainer Tier</h3>
+              <div class="flex items-center gap-2 text-xs">
+                <span class="text-slate-400">Billing:</span>
+                <button type="button" id="billingToggleBtn" class="px-3 py-1 rounded-lg bg-obsidian-800 border border-amber-500/30 text-amber-300 font-mono-code">
+                  Monthly (Switch to Annual -20%)
+                </button>
+              </div>
+            </div>
+            <div id="counsellingTiersGrid" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <!-- Populated dynamically by JS -->
+            </div>
+          </div>
+
+          <!-- Confidential War Room Booking Form -->
+          <div class="lg:col-span-5 card-surface rounded-2xl p-5 sm:p-6 border border-amber-500/30">
+            <span class="text-[11px] font-mono-code uppercase text-amber-400">ENCRYPTED SCHEDULER</span>
+            <h3 class="font-cinzel text-lg sm:text-xl font-bold text-white mt-0.5 mb-4">Commission a 1-on-1 War Room Briefing</h3>
+
+            <form id="counsellingBookingForm" class="space-y-3.5">
+              <div>
+                <label for="bookingAlias" class="block text-xs text-slate-300 mb-1">Operative Alias or Full Name *</label>
+                <input type="text" id="bookingAlias" required placeholder="e.g. Lorenzo de' Medici / Executive Alias" class="w-full px-3.5 py-2.5 rounded-xl bg-obsidian-950 border border-white/15 text-sm text-white focus:border-amber-400 focus:outline-none" />
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label for="bookingArena" class="block text-xs text-slate-300 mb-1">Target Theater *</label>
+                  <select id="bookingArena" class="w-full px-3 py-2.5 rounded-xl bg-obsidian-950 border border-white/15 text-xs sm:text-sm text-white focus:border-amber-400 focus:outline-none">
+                    <option value="Corporate Office">Corporate Office Hierarchy</option>
+                    <option value="Business & Boardroom">Business &amp; Hostile Takeover</option>
+                    <option value="School / College">School / University Politics</option>
+                    <option value="Workplace Leadership">Workplace Subordinate Control</option>
+                    <option value="Bureaucracy & Statecraft">Bureaucracy &amp; Protest Suppression</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="bookingTierSelect" class="block text-xs text-slate-300 mb-1">Selected Tier *</label>
+                  <select id="bookingTierSelect" class="w-full px-3 py-2.5 rounded-xl bg-obsidian-950 border border-white/15 text-xs sm:text-sm text-white focus:border-amber-400 focus:outline-none">
+                    <option value="The Consigliere ($490)">The Consigliere</option>
+                    <option value="The Initiate ($190)">The Initiate</option>
+                    <option value="Sovereign Apex ($1,490)">Sovereign Apex</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label for="bookingObjective" class="block text-xs text-slate-300 mb-1">Primary Power Objective / Threat Description *</label>
+                <textarea id="bookingObjective" rows="3" required placeholder="Describe the rival faction, insubordinate team, bureaucratic bottleneck, or negotiation you need to dominate..." class="w-full px-3.5 py-2 rounded-xl bg-obsidian-950 border border-white/15 text-sm text-white focus:border-amber-400 focus:outline-none"></textarea>
+              </div>
+
+              <button type="submit" class="w-full py-3 rounded-xl bg-gradient-to-r from-crimson-700 to-crimson-600 hover:from-crimson-600 hover:to-crimson-500 text-white font-bold text-xs uppercase tracking-wider shadow-lg transition">
+                Lock In War Room Briefing
+              </button>
+            </form>
+
+            <div id="bookingConfirmationBox" class="hidden mt-4 p-3.5 rounded-xl bg-emerald-950/60 border border-emerald-500/40 text-xs text-emerald-200 space-y-1">
+              <!-- Populated upon booking submission -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: ABOUT & THE MACHIAVELLIFY MANIFESTO -->
+    <section id="aboutSection" class="py-16 sm:py-24 bg-obsidian-900/60 border-b border-white/10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-7 space-y-4">
+            <span class="text-xs font-mono-code uppercase tracking-widest text-amber-400 block">ABOUT MACHIAVELLIFY • THE DOCTRINE OF REALITY</span>
+            <h2 class="font-cinzel text-2xl sm:text-4xl font-black text-white">WHY THE WORLD BELONGS TO THE FEARED, NOT THE LOVED</h2>
+            <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+              In 1513, Niccolò Machiavelli wrote the single most honest treatise in human history: that there is a vast gulf between <em>how men live</em> and <em>how men ought to live</em>. Anyone who abandons what is done for what ought to be done learns his ruin rather than his preservation.
+            </p>
+            <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+              Modern institutions—corporations, universities, ministries, and boardrooms—preach empathy, flat hierarchies, and transparency solely to pacify the lower 99% into voluntary compliance. At the top of the pyramid, decisions are governed by <strong class="text-amber-400">leverage, fear of loss, coalition fracturing, and procedural ambiguity</strong>.
+            </p>
+          </div>
+
+          <div class="lg:col-span-5 card-surface rounded-2xl p-6 border border-white/10 space-y-4">
+            <h3 class="font-cinzel text-lg font-bold text-amber-400">How the Sovereign Suppresses Protests by "Blurring the Line"</h3>
+            <ul class="space-y-3 text-xs sm:text-sm text-slate-300">
+              <li class="flex items-start gap-2.5">
+                <span class="text-crimson-400 font-bold">01.</span>
+                <span><strong>Never Provide a Clean Target:</strong> Overt tyranny creates martyrs and unites opposition. By blurring administrative lines, delegating harsh cuts to committees, and wrapping coercion in procedural necessity, protestors cannot find a focal point to rally against.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-crimson-400 font-bold">02.</span>
+                <span><strong>Co-Opt the Loudest Ring-Leaders:</strong> Offer selective privileges or symbolic advisory seats to vocal critics. Once seen negotiating inside your chamber, their credibility with the rest of the insurgents evaporates.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-crimson-400 font-bold">03.</span>
+                <span><strong>Weaponize the System's Own Rules:</strong> Master the bylaws, compliance codes, and HR charters better than their authors. Exhaust dissent through endless procedural loops while executing your agenda unimpeded.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Comparison Table: The Sheep Conditioning vs. The Sovereign Wolf -->
+        <div class="card-surface rounded-2xl overflow-hidden border border-white/10">
+          <div class="p-4 sm:p-6 border-b border-white/10 bg-obsidian-950">
+            <h3 class="font-cinzel text-lg sm:text-xl font-bold text-white">Paradigm Contrast: The Conditioned Sheep vs. The Machiavellify Predator</h3>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse text-xs sm:text-sm">
+              <thead>
+                <tr class="bg-obsidian-900 text-amber-400 font-mono-code uppercase text-[11px] border-b border-white/10">
+                  <th class="py-3.5 px-4">Dimension of Power</th>
+                  <th class="py-3.5 px-4">The Sheep Costume (Naive Conditioning)</th>
+                  <th class="py-3.5 px-4">The Machiavellify Wolf (Apex Realpolitik)</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-white/10 text-slate-300">
+                <tr>
+                  <td class="py-3.5 px-4 font-semibold text-white">Subordinate Allegiance</td>
+                  <td class="py-3.5 px-4">Seeks to be liked and loved; shocked when betrayed during a crisis.</td>
+                  <td class="py-3.5 px-4 text-amber-300">Commands respect and calibrated dread; avoids hatred while ensuring disobedience carries certain cost.</td>
+                </tr>
+                <tr>
+                  <td class="py-3.5 px-4 font-semibold text-white">Information &amp; Intentions</td>
+                  <td class="py-3.5 px-4">Overshares plans, vulnerabilities, and next moves in the name of "authenticity."</td>
+                  <td class="py-3.5 px-4 text-amber-300">Practices strategic ambiguity; reveals only what advances the objective.</td>
+                </tr>
+                <tr>
+                  <td class="py-3.5 px-4 font-semibold text-white">Handling Protests &amp; Resistance</td>
+                  <td class="py-3.5 px-4">Either capitulates emotionally orlashes out clumsily, creating martyrs.</td>
+                  <td class="py-3.5 px-4 text-amber-300">Blurs the line, fragments opposing coalitions, and uses institutional rules to dissolve dissent silently.</td>
+                </tr>
+                <tr>
+                  <td class="py-3.5 px-4 font-semibold text-white">Corporate &amp; Academic Credit</td>
+                  <td class="py-3.5 px-4">Does the invisible heavy lifting and hopes hard work speaks for itself.</td>
+                  <td class="py-3.5 px-4 text-amber-300">Controls the narrative architecture; owns high-visibility victories and delegates unpopular friction.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Interactive FAQ Accordion -->
+        <div>
+          <h3 class="font-cinzel text-xl sm:text-2xl font-bold text-white mb-4">Frequently Queried Doctrines</h3>
+          <div id="faqAccordionContainer" class="space-y-3">
+            <!-- Populated dynamically by JS -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 7: CONTACT & ENCRYPTED DISPATCH -->
+    <section id="contactSection" class="py-16 sm:py-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          <div class="lg:col-span-5 space-y-4">
+            <span class="text-xs font-mono-code uppercase tracking-widest text-crimson-400 block">CHANCERY COMMUNICATIONS</span>
+            <h2 class="font-cinzel text-2xl sm:text-4xl font-black text-white">SEND AN ENCRYPTED DISPATCH</h2>
+            <p class="text-slate-400 text-sm sm:text-base">
+              Transmit inquiries regarding enterprise executive workshops, private consigliere retainers, media dossiers, or institutional partnerships.
+            </p>
+
+            <div class="p-4 rounded-xl bg-obsidian-900 border border-white/10 space-y-2 text-xs font-mono-code text-slate-300">
+              <div>📍 <strong>CITADEL HQ:</strong> Palazzo Vecchio Sector • Florence / Global Digital Node</div>
+              <div>🔐 <strong>CIPHER PROTOCOL:</strong> Florentine-AES-256 Diplomatic Channel</div>
+              <div>⏱️ <strong>CHANCERY SLA:</strong> Priority dispatches reviewed within 4 hours</div>
+            </div>
+
+            <!-- Live Sent Dispatches Log -->
+            <div class="p-4 rounded-xl bg-obsidian-900 border border-white/10">
+              <div class="text-xs font-mono-code uppercase text-amber-400 mb-2">Recent Chancery Transmissions</div>
+              <div id="contactDispatchLog" class="space-y-2 text-xs text-slate-400">
+                <div>No dispatches transmitted in this session yet.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7 card-surface rounded-2xl p-6 sm:p-8 border border-white/10">
+            <form id="contactDispatchForm" class="space-y-4">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="contactName" class="block text-xs text-slate-300 mb-1">Diplomatic Name / Title *</label>
+                  <input type="text" id="contactName" required placeholder="e.g. Cesare Borgia" class="w-full px-4 py-3 rounded-xl bg-obsidian-950 border border-white/15 text-sm text-white focus:border-amber-400 focus:outline-none" />
+                </div>
+                <div>
+                  <label for="contactEmail" class="block text-xs text-slate-300 mb-1">Return Cipher Address (Email) *</label>
+                  <input type="email" id="contactEmail" required placeholder="operative@domain.com" class="w-full px-4 py-3 rounded-xl bg-obsidian-950 border border-white/15 text-sm text-white focus:border-amber-400 focus:outline-none" />
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="contactSubject" class="block text-xs text-slate-300 mb-1">Dispatch Classification *</label>
+                  <select id="contactSubject" class="w-full px-4 py-3 rounded-xl bg-obsidian-950 border border-white/15 text-sm text-white focus:border-amber-400 focus:outline-none">
+                    <option value="Executive & Corporate Retainer">Executive &amp; Corporate Retainer</option>
+                    <option value="Crisis & Protest Suppression">Crisis &amp; Protest Suppression</option>
+                    <option value="Campus / Institutional Strategy">Campus / Institutional Strategy</option>
+                    <option value="Inner Circle Membership">Inner Circle Membership Inquiry</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="contactUrgency" class="block text-xs text-slate-300 mb-1">Urgency Level</label>
+                  <select id="contactUrgency" class="w-full px-4 py-3 rounded-xl bg-obsidian-950 border border-white/15 text-sm text-white focus:border-amber-400 focus:outline-none">
+                    <option value="Standard Diplomatic">Standard Diplomatic</option>
+                    <option value="High — Active Rivalry">High — Active Rivalry</option>
+                    <option value="Critical — Hostile Coup in Progress">Critical — Hostile Coup in Progress</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label for="contactMessage" class="block text-xs text-slate-300 mb-1">Encrypted Intelligence Brief *</label>
+                <textarea id="contactMessage" rows="4" required placeholder="Detail your strategic requirements..." class="w-full px-4 py-3 rounded-xl bg-obsidian-950 border border-white/15 text-sm text-white focus:border-amber-400 focus:outline-none"></textarea>
+              </div>
+
+              <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-obsidian-950 font-bold text-xs sm:text-sm uppercase tracking-wider shadow-lg transition">
+                Transmit Sealed Dispatch
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-obsidian-950 border-t border-white/10 py-12 text-xs text-slate-400">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <span class="font-cinzel font-black text-white text-base">MACHIAVELLI<span class="text-crimson-500">FY</span></span>
+        <span>•</span>
+        <span>"Everyone sees what you appear to be, few experience what you really are."</span>
+      </div>
+      <div class="flex flex-wrap gap-4">
+        <a href="#heroSection" class="hover:text-amber-400">Top</a>
+        <a href="#arenasSection" class="hover:text-amber-400">Arenas</a>
+        <a href="#cornerSection" class="hover:text-amber-400">Machiavelli's Corner</a>
+        <a href="#gamesSection" class="hover:text-amber-400">Games</a>
+        <a href="#blogSection" class="hover:text-amber-400">Blog</a>
+        <a href="#counsellingSection" class="hover:text-amber-400">Counselling</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL 1: ARTICLE / DOSSIER READER MODAL -->
+  <div id="articleReaderModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-3 sm:p-6">
+    <div class="card-surface rounded-2xl max-w-3xl w-full max-h-[90vh] flex flex-col border border-amber-500/40 overflow-hidden shadow-2xl">
+      <div class="p-4 sm:p-5 bg-obsidian-950 border-b border-white/10 flex items-center justify-between gap-3">
+        <span id="modalArticleCategory" class="px-2.5 py-1 rounded bg-crimson-900/60 border border-crimson-500/40 text-crimson-300 font-mono-code text-xs uppercase">DOSSIER</span>
+        <div class="flex items-center gap-2">
+          <button type="button" id="modalBookmarkBtn" class="px-3 py-1.5 rounded-lg bg-obsidian-800 hover:bg-obsidian-700 text-amber-300 text-xs border border-white/10">
+            ★ Save to Vault
+          </button>
+          <button type="button" id="closeArticleModalBtn" class="p-1.5 rounded-lg bg-obsidian-800 hover:bg-crimson-600 text-white text-xs font-bold px-3">
+            ✕ Close
+          </button>
+        </div>
+      </div>
+      <div id="modalArticleContent" class="p-5 sm:p-8 overflow-y-auto space-y-4 text-slate-200 leading-relaxed">
+        <!-- Populated dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 2: INNER CIRCLE LOGIN / REGISTER / SOVEREIGN VAULT MODAL -->
+  <div id="authVaultModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-3 sm:p-6">
+    <div class="card-surface rounded-2xl max-w-xl w-full max-h-[90vh] flex flex-col border border-amber-500/40 overflow-hidden shadow-2xl">
+      <div class="p-4 sm:p-5 bg-obsidian-950 border-b border-white/10 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-amber-400"></span>
+          <h3 class="font-cinzel text-base sm:text-lg font-bold text-white">INNER CIRCLE CITADEL &amp; VAULT</h3>
+        </div>
+        <button type="button" id="closeAuthModalBtn" class="px-3 py-1 rounded-lg bg-obsidian-800 hover:bg-crimson-600 text-white text-xs font-bold">✕ Close</button>
+      </div>
+
+      <div class="p-5 sm:p-6 overflow-y-auto space-y-5">
+        <!-- Logged-Out Auth Tabs -->
+        <div id="authLoggedOutView" class="space-y-4">
+          <div class="flex gap-2 border-b border-white/10 pb-3">
+            <button type="button" id="tabLoginBtn" class="px-4 py-2 rounded-lg bg-crimson-600 text-white text-xs font-bold uppercase">Operative Login</button>
+            <button type="button" id="tabRegisterBtn" class="px-4 py-2 rounded-lg bg-obsidian-800 text-slate-300 text-xs font-bold uppercase">Initiate Induction</button>
+            <button type="button" id="demoSovereignLoginBtn" class="ml-auto px-3 py-2 rounded-lg bg-amber-500/20 border border-amber-500/40 text-amber-300 text-xs font-mono-code">
+              ⚡ Instant Sovereign Access
+            </button>
+          </div>
+
+          <form id="authForm" class="space-y-3.5">
+            <div id="registerAliasField" class="hidden">
+              <label for="authAliasInput" class="block text-xs text-slate-300 mb-1">Chosen Florentine Alias</label>
+              <input type="text" id="authAliasInput" placeholder="e.g. Prince Lorenzo" class="w-full px-3.5 py-2.5 rounded-xl bg-obsidian-950 border border-white/15 text-sm text-white" />
+            </div>
+            <div>
+              <label for="authEmailInput" class="block text-xs text-slate-300 mb-1">Operative Email / Cipher ID *</label>
+              <input type="email" id="authEmailInput" required value="sovereign@machiavellify.io" class="w-full px-3.5 py-2.5 rounded-xl bg-obsidian-950 border border-white/15 text-sm text-white" />
+            </div>
+            <div>
+              <label for="authPasswordInput" class="block text-xs text-slate-300 mb-1">Secret Passphrase *</label>
+              <input type="password" id="authPasswordInput" required value="IlPrincipe1513" class="w-full px-3.5 py-2.5 rounded-xl bg-obsidian-950 border border-white/15 text-sm text-white" />
+            </div>
+            <button type="submit" id="authSubmitBtn" class="w-full py-3 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 text-obsidian-950 font-bold text-xs uppercase tracking-wider">
+              Authenticate &amp; Unlock Vault
+            </button>
+          </form>
+        </div>
+
+        <!-- Logged-In Sovereign Vault View -->
+        <div id="authLoggedInView" class="space-y-4">
+          <div class="p-4 rounded-xl bg-obsidian-950 border border-amber-500/30 flex items-center justify-between">
+            <div>
+              <div class="text-[10px] font-mono-code text-amber-400 uppercase">ACTIVE OPERATIVE</div>
+              <div id="vaultUserAlias" class="font-cinzel text-lg font-bold text-white">Sovereign Operative</div>
+              <div id="vaultUserEmail" class="text-xs text-slate-400">guest@machiavellify.io</div>
+            </div>
+            <button type="button" id="logoutOperativeBtn" class="px-3 py-1.5 rounded-lg bg-obsidian-800 hover:bg-crimson-700 text-xs text-slate-200 border border-white/10">
+              Lock Session
+            </button>
+          </div>
+
+          <div>
+            <h4 class="font-cinzel text-sm font-bold text-amber-400 uppercase mb-2">Saved Intelligence Dossiers &amp; Maxims</h4>
+            <div id="vaultSavedList" class="space-y-2 text-xs text-slate-300 max-h-48 overflow-y-auto">
+              <!-- Populated dynamically -->
+            </div>
+          </div>
+
+          <div>
+            <h4 class="font-cinzel text-sm font-bold text-crimson-400 uppercase mb-2">Scheduled War Room Briefings</h4>
+            <div id="vaultBookingsList" class="space-y-2 text-xs text-slate-300">
+              <!-- Populated dynamically -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION BANNER -->
+  <div id="toastBanner" class="hidden fixed bottom-5 right-5 z-50 max-w-sm px-4 py-3 rounded-xl bg-obsidian-900 border border-amber-500/50 text-white text-xs shadow-2xl flex items-center gap-2.5">
+    <span class="w-2 h-2 rounded-full bg-amber-400 shrink-0"></span>
+    <span id="toastMessageText">Action executed.</span>
+  </div>
+
+  <script>
+
+// ============================================================================
+// MACHIAVELLIFY MASTER INTELLIGENCE DATASET
+// ============================================================================
+
+const PYRAMID_TIERS = [
+  {
+    id: 'tier-1',
+    rank: 'TIER I — APEX',
+    title: 'The Sovereign Architects (Top 0.1%)',
+    pop: '0.1% of Population',
+    color: 'from-amber-500 to-amber-600 text-obsidian-950 font-extrabold',
+    summary: 'They design the rules, own the capital infrastructure, and remain invisible behind institutional veils.',
+    tactic: 'Never appear as the direct author of harsh decrees; delegate punishments to courts or committees while reserving pardons and windfalls for personal branding.'
+  },
+  {
+    id: 'tier-2',
+    rank: 'TIER II — CONSIGLIERI',
+    title: 'The Grand Strategists & Gatekeepers (1.9%)',
+    pop: '1.9% of Population',
+    color: 'from-crimson-700 to-crimson-600 text-white font-bold',
+    summary: 'Chiefs of staff, board directors, senior bureaucrats, and deans who control information flow and agenda-setting.',
+    tactic: 'Master procedural bylaws to blur the line—neutralizing protests through endless administrative committees and selective co-optation.'
+  },
+  {
+    id: 'tier-3',
+    rank: 'TIER III — ENFORCERS',
+    title: 'The Tactical Lions & Operatives (8%)',
+    pop: '8% of Population',
+    color: 'from-obsidian-700 to-obsidian-800 text-amber-300 font-semibold border-amber-500/30',
+    summary: 'Ambitious VPs, department heads, and operators who enforce fear and harvest metrics from the tiers below.',
+    tactic: 'Command calibrated dread over affection. Ensure every subordinate knows their career trajectory depends on strict alignment.'
+  },
+  {
+    id: 'tier-4',
+    rank: 'TIER IV — BUFFER',
+    title: 'The Moralizing Middle Managers (25%)',
+    pop: '25% of Population',
+    color: 'from-obsidian-800 to-obsidian-900 text-slate-300',
+    summary: 'Trapped between upper-tier mandates and lower-tier resentment; they absorb blame when the Sovereign blurs the line.',
+    tactic: 'Escape this tier immediately by acquiring asymmetric leverage (exclusive client relationships, proprietary technical keys, or regulatory mastery).'
+  },
+  {
+    id: 'tier-5',
+    rank: 'TIER V — BASE',
+    title: 'The Conditioned Flock (65% Sheep Costume)',
+    pop: '65% of Population',
+    color: 'from-obsidian-900 to-obsidian-950 text-slate-400',
+    summary: 'Pacified by slogans of "workplace family", meritocracy myths, and abstract benevolence while trading autonomy for security.',
+    tactic: 'First step of Machiavellify: recognize that nobody is coming to reward your quiet obedience. Shed the sheep costume.'
+  }
+];
+
+const ARENAS_DATA = [
+  {
+    id: 'corporate',
+    name: 'Corporate Office',
+    badge: 'ARENA 01 • C-SUITE & HIERARCHY',
+    headline: 'Corporate Office Warfare: Credit Architecture & Rival Neutralization',
+    quote: '"Men are so simple of mind, and so much dominated by their immediate needs, that a deceitful man will always find plenty who are ready to be deceived." — The Prince, Ch. XVIII',
+    sheepIllusion: 'Believing that working 70 hours a week with your head down, helping colleagues unconditionally, and being "universally liked" will naturally earn you the VP promotion.',
+    wolfReality: 'Promotions are allocations of political capital, not rewards for exhaustion. If you are indispensable at your current desk and feared by nobody, keeping you stagnant is the most profitable move for your superiors.',
+    fearVsLoveApplication: 'When subordinates merely "like" you, they miss deadlines whenever convenient and expect your empathy. When they fear your precision audits, documented performance trails, and decisive reassignment of star projects, your division executes with clockwork discipline.',
+    blurringTheLineProtocol: 'When pushing through an unpopular restructuring or KPI hike, never announce it as your personal whim. Attribute it to "Cross-Functional Board Alignment Metrics" or an external audit matrix. Let disgruntled staff argue with an abstract rubric while you appear as the pragmatic mediator.',
+    playbook: [
+      { title: 'Information Asymmetry Gatekeeping', desc: 'Become the sole bridge between two siloed departments (e.g., Engineering and Revenue). Translate each side to the other so neither can operate without your brokerage.' },
+      { title: 'Strategic Credit Delegation', desc: 'Own projects with high executive visibility and clear binary wins. Delegate ambiguous, politically radioactive committees to your most ambitious peer.' },
+      { title: 'Paper-Trail Deterrence', desc: 'Follow every verbal concession from a rival with a polite "Per our alignment" summary email. You build an unassailable fortress of accountability.' },
+      { title: 'Calculated Scarcity of Praise', desc: 'Constant praise inflates subordinate entitlement. Dispense approval rarely and unpredictably so high performers compete relentlessly for your nod.' }
+    ]
+  },
+  {
+    id: 'business',
+    name: 'Business & Markets',
+    badge: 'ARENA 02 • MONOPOLY & LEVERAGE',
+    headline: 'Business & Boardroom Dominion: Asymmetric Moats & Competitor Encirclement',
+    quote: '"Never attempt to win by force what can be won by deception." — Niccolò Machiavelli, Discourses on Livy',
+    sheepIllusion: 'Assuming business is a polite game of "win-win partnerships," transparent pricing, and trusting handshake promises from suppliers, venture capitalists, or co-founders.',
+    wolfReality: 'Every counterparty in a value chain is constantly testing whether they can compress your margin or replicate your moat. Enduring empires are built on switching costs, exclusive bottlenecks, and contractual iron.',
+    fearVsLoveApplication: 'Vendors, distributors, and partners who "love" your brand will still abandon you for a 7% margin improvement. Partners who fear losing access to your proprietary distribution channel or facing your legal/exclusivity penalties never defect.',
+    blurringTheLineProtocol: 'While stealthily building a product that obsoletes a competitor or partner, publicly praise their ecosystem and participate in joint industry panels. Keep your strategic pivot cloaked behind benign R&D framing until switching costs are locked.',
+    playbook: [
+      { title: 'Dual-Source Supplier Competition', desc: 'Never allow a single vendor or key executive to hold a monopoly on your operations. Keep a visible secondary option warm so every negotiator feels replaceable.' },
+      { title: 'Weaponized Compliance & Standards', desc: 'Once you achieve scale, lobby for rigorous industry certifications or technical standards that your infrastructure already meets but smaller rivals cannot afford.' },
+      { title: 'Decoy Signaling in Market Entry', desc: 'Announce loud exploratory interest in a secondary vertical to draw competitor capital there, while quietly locking up distressed assets in your primary target market.' },
+      { title: 'Crisis Acquisition Leverage', desc: 'Maintain liquid reserves when competitors over-leverage during hype cycles; acquire their core IP for pennies when credit tightens.' }
+    ]
+  },
+  {
+    id: 'college',
+    name: 'School & College',
+    badge: 'ARENA 03 • ACADEMIA & CAMPUS',
+    headline: 'School & University Hierarchy: Patronage Networks, Committees & Status Games',
+    quote: '"A wise prince should build on what is his own and not on what is another’s." — The Prince, Ch. XVII',
+    sheepIllusion: 'Thinking university is purely about isolated exam grades or joining campus activist groups as an unpaid foot soldier while sacrificing your own career leverage.',
+    wolfReality: 'Elite universities and schools are rehearsal stages for institutional gatekeeping. Recommendations, lab funding, fellowship nominations, and alumni pipelines flow to those who master faculty patronage and coalition control.',
+    fearVsLoveApplication: 'In group projects, student government, or research labs, peers exploit the "agreeable teammate" by dumping work on them. Establish early that you control the final submission deck and grade-contribution log—making shirking costly.',
+    blurringTheLineProtocol: 'Never get baited into polarized campus shouting matches that leave permanent digital scars. Position yourself as the "Institutional Reform Liaison" who sits on the dean’s advisory committee—gaining faculty recommendation letters while vocal agitators burn out.',
+    playbook: [
+      { title: 'Faculty Ego & Citation Patronage', desc: 'Read a target professor’s most neglected paper before office hours. Ask a sharp question extending their thesis; you instantly transition from student #400 to protégé.' },
+      { title: 'Kingmaker Coalition in Campus Elections', desc: 'Instead of running as a polarizing figurehead, organize the swing bloc of 3 technical clubs and extract guaranteed treasurer/committee seats from whichever candidate wins.' },
+      { title: 'Archive & Syllabus Arbitrage', desc: 'Collect past grading rubrics, grant templates, and alumni interview dossiers into a private repository; grant access selectively to build a network of indebted high-achievers.' },
+      { title: 'Neutralizing Free-Riders', desc: 'Modularize group deliverables on Day 1 with individual sign-offs visible to the instructor, making any slacker’s failure self-isolating.' }
+    ]
+  },
+  {
+    id: 'workplace',
+    name: 'Workplace Teams',
+    badge: 'ARENA 04 • COMMAND & SUBORDINATES',
+    headline: 'Workplace Leadership: Mastering Fear vs. Love & Crushing Mutiny',
+    quote: '"Love is held by a chain of obligation which, men being selfish, is broken whenever it serves their purpose; but fear is maintained by a dread of punishment which never fails." — The Prince, Ch. XVII',
+    sheepIllusion: 'Trying to be the "cool, empathetic boss" who shields underperformers, apologizes for assigning urgent tasks, and treats subordinates as close confidants.',
+    wolfReality: 'Familiarity breeds contempt. The moment you need your team to execute under pressure, the "friend-boss" faces excuses and pushback, whereas the feared commander receives immediate compliance.',
+    fearVsLoveApplication: 'Machiavelli stresses a critical distinction: command FEAR, never HATRED. You avoid hatred by never humiliating subordinates arbitrarily or stealing their contractual compensation; you command fear by making standards absolute and consequences swift, impersonal, and irreversible.',
+    blurringTheLineProtocol: 'When two ambitious subordinates begin forming a clique to challenge your authority, do not confront them together. Promote both to co-lead a high-pressure initiative with a single undivided bonus pool—turning their alliance into mutual surveillance.',
+    playbook: [
+      { title: 'Swift, Single-Stroke Discipline', desc: 'Per Chapter VIII, injuries and disciplinary restructuring must be executed all at once so the shock is brief; rewards and bonuses must be dripped out gradually so they are savored.' },
+      { title: 'Divide Incipient Cliques', desc: 'Reassign seating, project pairings, and reporting windows whenever an informal faction starts coordinating pushback against departmental targets.' },
+      { title: 'The Scape-Mechanism', desc: 'Use an external consultant or automated auditing tool to deliver harsh performance cuts, then step in personally to grant a partial reprieve—securing both compliance and gratitude.' },
+      { title: 'Never Reveal Your Constraint', desc: 'Even when an directive comes from above, present it with sovereign composure. A leader who complains about upper management to his team signals impotence.' }
+    ]
+  },
+  {
+    id: 'bureaucracy',
+    name: 'Bureaucracy & State',
+    badge: 'ARENA 05 • INSTITUTIONS & PROTESTS',
+    headline: 'Bureaucracy & Institutional Politics: Blurring the Line to Dissolve Protests',
+    quote: '"One who deceives will always find those who allow themselves to be deceived." — Niccolò Machiavelli',
+    sheepIllusion: 'Fighting a bureaucracy head-on with emotional petitions, moral outrage, or loud public protests while ignoring how the procedural machinery actually operates.',
+    wolfReality: 'Bureaucracies are immune to moral outrage; they only respond to procedural leverage, jurisdictional bottlenecks, and career-risk calculus. He who writes the definitions and controls the calendar rules the institution.',
+    fearVsLoveApplication: 'Bureaucrats do not act out of love for the public or the mission; they act out of fear of career liability, audit exposure, or jurisdictional loss. Frame every demand so that approving your request is their safest career path.',
+    blurringTheLineProtocol: 'To suppress protests against your administration without triggering backlash: blur the line between concession and control. Establish a "Blue-Ribbon Listening Commission" with a 9-month timeline, split protesters into moderates vs. radicals via selective policy crumbs, and bury hostile motions in sub-committee procedural reviews.',
+    playbook: [
+      { title: 'Procedural Exhaustion (Fabian Delay)', desc: 'When facing an organized protest movement, never give them a dramatic refusal to rally around. Welcome their petition into a 14-step technical review until their momentum and funding evaporate.' },
+      { title: 'Co-Opting the Vanguard', desc: 'Invite the two most articulate protest leaders into an exclusive "Policy Working Group" with NDA protocols. Their base will immediately suspect them of selling out.' },
+      { title: 'Jurisdictional Fog ("Blurring the Line")', desc: 'Split controversial authority across three overlapping boards so no single official can be cornered, subpoenaed, or targeted by opposition campaigns.' },
+      { title: 'Agenda & Calendar Sovereignty', desc: 'Place contentious votes at the end of 6-hour technical sessions or on holiday eves after exhausting opponents on trivial amendments.' }
+    ]
+  }
+];
+
+const MAXIMS_DATA = [
+  {
+    id: 'm1',
+    chapter: 'The Prince • Chapter XVII',
+    category: 'Fear & Authority',
+    title: 'Better to Be Feared Than Loved',
+    quote: 'It is much safer to be feared than loved, when, of the two, either must be dispensed with.',
+    analysis: 'Men love at their own inclination, but fear at the inclination of the prince. A wise ruler builds on what is under his own control, not on the fickle gratitude of others.',
+    realWorldMove: 'Anchor team compliance in clear, audited consequences and performance gates rather than emotional appeals.'
+  },
+  {
+    id: 'm2',
+    chapter: 'The Prince • Chapter XVIII',
+    category: 'Deception & Optics',
+    title: 'The Lion and The Fox',
+    quote: 'A prince must imitate the fox and the lion, for the lion cannot protect himself from traps, and the fox cannot defend himself from wolves.',
+    analysis: 'Pure brute force (the Lion) walks blindly into legal, financial, and political snares. Pure cunning (the Fox) lacks the coercive weight to deter open aggression. Combine both.',
+    realWorldMove: 'Read every fine-print clause like a Fox; enforce contractual breaches with the overwhelming force of a Lion.'
+  },
+  {
+    id: 'm3',
+    chapter: 'The Prince • Chapter VIII',
+    category: 'Fear & Authority',
+    title: 'Cruelties Well-Used vs. Ill-Used',
+    quote: 'Injuries ought to be done all at one time, so that, being tasted less, they offend less; benefits ought to be given little by little, so that the flavor of them may last longer.',
+    analysis: 'Dragging out layoffs, budget cuts, or disciplinary measures breeds chronic paranoia and rebellion. Execute necessary severities in a single decisive stroke, then pivot immediately to incremental rewards.',
+    realWorldMove: 'Consolidate all organizational restructuring into Day 1 of your tenure; spend the next 11 months distributing targeted incentives.'
+  },
+  {
+    id: 'm4',
+    chapter: 'The Prince • Chapter XVIII',
+    category: 'Deception & Optics',
+    title: 'Appearance Over Essence (The Mask of Virtue)',
+    quote: 'It is not necessary for a prince to have all the good qualities I have enumerated, but it is very necessary to appear to have them.',
+    analysis: 'Actually practicing unconditional mercy, total honesty, and rigid generosity at all times will destroy you among ruthless competitors. Yet appearing merciful, pious, and Principled wins public legitimacy.',
+    realWorldMove: 'Champion high-minded corporate social governance publicly while executing ruthless margin optimization behind closed doors.'
+  },
+  {
+    id: 'm5',
+    chapter: 'Discourses on Livy • Book I',
+    category: 'Crushing Dissent',
+    title: 'Blurring the Line to Pacify the Multitude',
+    quote: 'He who desires to reform an existing state must retain at least the shadow of its ancient customs, so that the people do not perceive that the order has changed.',
+    analysis: 'People rebel against sudden changes in titles and symbols far more than changes in actual substance. Keep familiar titles, committees, and ceremonies intact while hollowing out and centralizing real power.',
+    realWorldMove: 'When centralizing decision power in a company or bureaucracy, keep existing committee names as "advisory boards" so nobody realizes their veto was removed.'
+  },
+  {
+    id: 'm6',
+    chapter: 'The Prince • Chapter XVII',
+    category: 'Fear & Authority',
+    title: 'Command Fear Without Provoking Hatred',
+    quote: 'A prince ought to inspire fear in such a way that, if he does not win love, he avoids hatred; because he can endure very well being feared whilst he is not hated.',
+    analysis: 'Fear is a cold, rational respect for your power to punish disobedience. Hatred is an emotional vendetta triggered when you humiliate people gratuitously or seize their personal property/credit unfairly.',
+    realWorldMove: 'Enforce strict standards impersonally; never mock subordinates in public or withhold earned commissions.'
+  },
+  {
+    id: 'm7',
+    chapter: 'The Prince • Chapter VI',
+    category: 'Strategy & Warfare',
+    title: 'Armed Prophets Conquer, Unarmed Perish',
+    quote: 'All armed prophets have conquered, and the unarmed ones have been destroyed.',
+    analysis: 'Ideas, vision decks, and moral arguments have zero durability once initial enthusiasm fades unless backed by structural enforcement—budget control, hiring/firing authority, or contractual lock-in.',
+    realWorldMove: 'Never accept a "transformation leadership" role without direct sign-off over budget and personnel evaluations.'
+  },
+  {
+    id: 'm8',
+    chapter: 'The Prince • Chapter XIX',
+    category: 'Crushing Dissent',
+    title: 'Delegate Odious Measures, Monopolize Grace',
+    quote: 'Princes should delegate to others the enactment of unpopular measures and keep in their own hands the distribution of favors.',
+    analysis: 'Like Cesare Borgia using Remirro de Orco to pacify Romagna and then sacrificing him in the piazza, a strategic leader lets algorithms, compliance boards, or external auditors deliver bad news.',
+    realWorldMove: 'Let HR or external consultants announce policy tightening; step in personally to announce bonuses and promotions.'
+  },
+  {
+    id: 'm9',
+    chapter: 'The Prince • Chapter XXI',
+    category: 'Strategy & Warfare',
+    title: 'The Fatal Trap of Neutrality',
+    quote: 'A prince is also respected when he is either a true friend or a downright enemy; neutral states are always the prey of the conqueror.',
+    analysis: 'Sitting on the fence during an institutional power struggle earns the contempt of the victor (who sees you as a coward) and the resentment of the loser (whom you refused to aid).',
+    realWorldMove: 'Assess which faction holds superior structural leverage, then commit decisive support in exchange for a guaranteed post-victory seat.'
+  },
+  {
+    id: 'm10',
+    chapter: 'The Prince • Chapter XIII',
+    category: 'Strategy & Warfare',
+    title: 'Never Rely on Mercenary or Borrowed Arms',
+    quote: 'Auxiliary and mercenary arms are useless and perilous; a wise prince always avoids these arms and turns to his own.',
+    analysis: 'If your business depends entirely on a single third-party platform algorithm, or your career depends entirely on one mentor’s protection, you are a prisoner masquerading as a ruler.',
+    realWorldMove: 'Own your client relationships, direct distribution list, and core technical competency directly.'
+  },
+  {
+    id: 'm11',
+    chapter: 'Discourses on Livy • Book III',
+    category: 'Deception & Optics',
+    title: 'Strategic Concealment of Ambition',
+    quote: 'No enterprise is more likely to succeed than one concealed from the enemy until it is ripe for execution.',
+    analysis: 'Announcing your ambition to become CEO, Dean, or Market Leader prematurely unites every threatened incumbent against you while you are still weak.',
+    realWorldMove: 'Project loyal, unthreatening competence until you have quietly secured the votes, capital, and leverage to make your ascension irreversible.'
+  },
+  {
+    id: 'm12',
+    chapter: 'The Prince • Chapter XXV',
+    category: 'Strategy & Warfare',
+    title: 'Commanding Fortuna (Audacity Over Caution)',
+    quote: 'Fortune is a river that floods the plains when unchecked; yet men can build dikes and embankments in quiet times, and command her with audacity.',
+    analysis: 'Fifty percent of human affairs may be governed by macro volatility, but the other fifty percent belongs to preparation and bold, aggressive timing when rivals hesitate.',
+    realWorldMove: 'Build cash and political reserves during calm quarters; strike aggressively when market or organizational chaos paralyzes cautious peers.'
+  }
+];
+
+const BLOG_POSTS = [
+  {
+    id: 'blog-1',
+    title: 'Why Love Is an Abstract Illusion and Fear Is Structural Steel in Modern Management',
+    category: 'Corporate Warfare',
+    readTime: '7 min read',
+    date: 'October 2026 • Dossier #01',
+    tags: ['fear', 'love', 'corporate', 'workplace', 'subordinates'],
+    excerpt: 'An empirical dissection of Chapter XVII of The Prince applied to Fortune 500 management. Why "servant leadership" breeds entitlement and how calibrated dread drives flawless execution.',
+    body: [
+      'Walk into any modern corporate onboarding session and you will be drowned in the vocabulary of unconditional benevolence: "psychological safety," "we are a family," and "servant leadership." Yet look at the actual cap table and the executive committee at the apex of that same firm. None of them ascended by being the most self-sacrificing sheep in the pasture.',
+      'In Chapter XVII of Il Principe, Niccolò Machiavelli posed the eternal question: Is it better to be loved than feared, or the reverse? His answer remains undefeated after five centuries: "One would wish to be both, but because it is difficult to combine them, it is much safer to be feared than loved, when of the two either must be dispensed with."',
+      'Why does love fail in the workplace, business, and bureaucracy? Because love is held by a chain of moral obligation—an abstract psychological contract. Because human beings are fundamentally driven by self-interest, the moment your subordinate gets a competing offer, faces a political squeeze, or realizes they can slack off without penalty, they break that chain of obligation without a second thought.',
+      'Fear, by contrast, is anchored in the dread of consequence—lost bonuses, revoked territory, public audit exposure, or career stagnation. Consequence never loses its grip. The secret of the Machiavellify operator is learning to project cold, predictable, unshakeable consequence while remaining outwardly polite, composed, and scrupulously fair with contractual rewards so that fear never degenerates into personal hatred.'
+    ],
+    checklist: [
+      'Never apologize for enforcing a deadline or standard.',
+      'Replace emotional reprimands with cold, documented metric reviews.',
+      'Reward exceptional loyalty visibly; sever chronic defiance in a single stroke.'
+    ]
+  },
+  {
+    id: 'blog-2',
+    title: 'Blurring the Line: How Elite Bureaucracies Dissolve Protests Without Firing a Shot',
+    category: 'Bureaucracy & Statecraft',
+    readTime: '9 min read',
+    date: 'October 2026 • Dossier #02',
+    tags: ['protest', 'bureaucracy', 'blurring the line', 'dissent', 'politics'],
+    excerpt: 'Amateur rulers confront protests head-on and create martyrs. Sovereign architects blur jurisdictional lines, co-opt ringleaders, and drown opposition in procedural labyrinths.',
+    body: [
+      'When subordinates, students, employees, or citizens organize a protest against an administration, the amateur ruler makes one of two fatal errors: either he panics and surrenders his authority, or he lashes out with clumsy, visible brutality that galvanizes the protestors into a unified crusade.',
+      'The Machiavellian sovereign understands that a protest requires three elements to survive: a clear villain, a simple binary grievance, and emotional momentum. To crush the protest effortlessly, you must systematically starve all three by blurring the line.',
+      'First, eliminate the clear villain. Never let an unpopular policy carry a single human face. Route it through a "Multi-Stakeholder Governance Rubric" or an external regulatory mandate so protesters are forced to yell at a spreadsheet.',
+      'Second, fracture their coalition through selective concessions. Every protest movement consists of ideological hardliners and pragmatic followers who only care about one tangible perk. Grant a minor, low-cost concession to the pragmatists while inviting the two most ambitious student or union leaders onto a prestigious "Advisory Task Force." The moment the base sees their leaders drinking coffee in the executive suite, mutual suspicion destroys the movement from within.'
+    ],
+    checklist: [
+      'Absorb initial outrage into a slow-moving procedural study committee.',
+      'Separate pragmatic followers from ideological agitators via targeted micro-concessions.',
+      'Retain ancient nomenclature and ceremonial participation while centralizing budgetary sign-off.'
+    ]
+  },
+  {
+    id: 'blog-3',
+    title: 'Dark Psychology in the Boardroom: Detecting and Deploying Double Binds & Strategic Ambiguity',
+    category: 'Dark Psychology',
+    readTime: '8 min read',
+    date: 'October 2026 • Dossier #03',
+    tags: ['deception', 'dark psychology', 'manipulation', 'business', 'fox'],
+    excerpt: 'How apex negotiators use framing traps, engineered scarcity, and strategic vagueness to extract asymmetrical concessions while leaving counterparties convinced they won.',
+    body: [
+      'True manipulation mastery is never loud or coercive. When a counterparty feels forced, they spend the next twelve months plotting revenge. When you architect the choice environment so they "freely choose" the exact outcome you engineered, they defend your agenda as their own.',
+      'Consider the Machiavellian Double Bind in executive negotiations: you never present a single demand that can be rejected with a simple "No." Instead, you frame two options—Option A (which imposes high political exposure on your rival) and Option B (your actual objective, framed as the "moderate, safe compromise").',
+      'Combine this with Strategic Ambiguity. When superiors or rivals try to pin you down on a risky forecast, couch your commitment in contingent parameters ("Assuming Q3 infrastructure parity holds..."). If the initiative triumphs, you claim full authorship; if external headwinds strike, the pre-planted contingency exonerates you completely.'
+    ],
+    checklist: [
+      'Always anchor negotiations with an extreme Option A so your true target (Option B) appears reasonable.',
+      'Embed contingent escape clauses in every high-risk verbal or written commitment.',
+      'Watch what rivals do with their budget and calendar—ignore their virtuous press releases.'
+    ]
+  },
+  {
+    id: 'blog-4',
+    title: 'The Campus Prince: Mastering University Patronage, Lab Politics, and Elite Networks',
+    category: 'Campus & Academia',
+    readTime: '6 min read',
+    date: 'October 2026 • Dossier #04',
+    tags: ['college', 'school', 'academia', 'patronage', 'hierarchy'],
+    excerpt: 'Schools and universities preach egalitarian meritocracy while operating as feudal fiefdoms. Here is how to turn professors, deans, and student committees into your personal catapult.',
+    body: [
+      'Students trapped in the sheep mindset treat college like an assembly line: attend lectures, memorize slides, take the exam, and join twenty clubs as an overworked volunteer. They graduate with a generic degree and zero structural leverage.',
+      'A university is actually a collection of rival feudal baronies (departments, labs, endowment committees, and alumni chapters) competing for prestige and funding. Professors and deans have egos, rivals, and legacy anxieties.',
+      'By identifying the 3 faculty members who sit on fellowship and placement committees—and becoming the indispensable research lieutenant who advances their flagship publications—you bypass the open application slush pile entirely. In campus politics, never waste energy on symbolic debates; seize control of the Finance & Appropriations Committee that allocates budget to every other student organization.'
+    ],
+    checklist: [
+      'Target committee-chair faculty and align your research directly with their citation goals.',
+      'Control the treasury/appropriations node in student organizations rather than symbolic titles.',
+      'Build a private dossier of alumni decision-makers two years before graduation.'
+    ]
+  },
+  {
+    id: 'blog-5',
+    title: 'The Anatomy of the Scapegoat: Cesare Borgia’s Romagna Playbook in Corporate Turnarounds',
+    category: 'Corporate Warfare',
+    readTime: '7 min read',
+    date: 'October 2026 • Dossier #05',
+    tags: ['corporate', 'cesare borgia', 'scapegoat', 'fear', 'workplace'],
+    excerpt: 'In Chapter VII of The Prince, Cesare Borgia used the ruthless minister Remirro de Orco to pacify a lawless province, then executed him to win the people’s awe. Here is the modern corporate equivalent.',
+    body: [
+      'When Cesare Borgia conquered the chaotic province of Romagna, he knew that restoring order required draconian measures that would make the ruler unpopular. So he appointed Remirro de Orco, a cruel and efficient minister, with plenary power. Once Remirro had crushed the bandits and restored iron discipline, Borgia dissolved the tribunal and had Remirro displayed in the piazza at Cesena—leaving the populace simultaneously terrified, satisfied, and loyal to Borgia.',
+      'In modern corporate turnarounds and M&A integrations, executives deploy this exact protocol without bloodshed. When acquiring a bloated division, never walk in personally as the hatchet man if you plan to lead the survivors long-term.',
+      'Instead, bring in an interim Restructuring Director or external Turnaround Consultancy to execute the painful layoffs, cancel pet projects, and enforce strict new KPIs. Once the culture is shocked into compliance, conclude the consultant’s contract, restore a handful of minor perks, and step forward as the benevolent sovereign who brought stability back.'
+    ],
+    checklist: [
+      'Separate the agent of necessary disruption from the permanent face of sovereign leadership.',
+      'Ensure all unpopular cuts happen in Phase 1 before your permanent branding campaign begins.',
+      'Never reverse the structural gains of the turnaround—only soften the ceremonial tone.'
+    ]
+  },
+  {
+    id: 'blog-6',
+    title: 'Information Starvation & The Velvet Glove: Neutralizing Passive-Aggressive Rivals',
+    category: 'Dark Psychology',
+    readTime: '6 min read',
+    date: 'October 2026 • Dossier #06',
+    tags: ['deception', 'workplace', 'rivals', 'manipulation', 'office'],
+    excerpt: 'The most dangerous enemies in an office or bureaucracy never attack you openly—they sabotage via delay, selective omission, and feigned incompetence. Here is how to crush them.',
+    body: [
+      'Open enemies are easy to fight; covert saboteurs who smile in meetings while starving your project of data or slow-walking approvals are far deadlier. If you lose your temper at a passive-aggressive colleague, you look unhinged while they play the innocent victim.',
+      'The Machiavellify counter-measure is the Velvet Trap: enthusiastically praise their expertise in front of senior leadership, then assign them a crystal-clear, time-stamped micro-deliverable with executive CC visibility. Offer them "support resources" in writing so they cannot claim overload.',
+      'Now their weapon is turned against them: if they deliver, your project wins under your leadership; if they stall, their incompetence is automatically broadcast to the entire executive chain without you uttering a single hostile word.'
+    ],
+    checklist: [
+      'Never fight covert sabotage with emotional confrontation.',
+      'Use public praise + high-visibility CC’d milestones to box passive-aggressive rivals in.',
+      'Maintain parallel backup channels so a rival’s delay never halts your critical path.'
+    ]
+  }
+];
+
+const INTRIGUE_SCENARIOS = [
+  {
+    stage: 1,
+    arena: 'CORPORATE OFFICE • Q4 SUCCESSION',
+    title: 'The Credit Heist in the Executive Suite',
+    situation: 'Your peer Director, Julian, has privately obtained your team’s Q4 turnaround deck and plans to present its core thesis as his own during tomorrow morning’s Board Strategy Review.',
+    choices: [
+      {
+        label: 'A. Confront Julian angrily in his office today and demand he back off.',
+        outcome: 'Amateur Lion mistake. Julian now knows you are aware, alters his slides slightly, and tells the VP you are emotionally unstable.',
+        delta: { fear: -10, leverage: -15, optics: -15, protest: +15 },
+        verdict: 'SHEEP / RECKLESS LION MOVE'
+      },
+      {
+        label: 'B. Say nothing; plant one flawed metric in the shared draft he stole, then unveil the verified live dataset during the Board Q&A.',
+        outcome: 'Pure Florentine Fox mastery! Julian presents the poisoned number, you calmly offer the real-time audited correction in front of the CEO, and Julian’s credibility is shattered permanently.',
+        delta: { fear: +20, leverage: +25, optics: +15, protest: -10 },
+        verdict: 'APEX MACHIAVELLIAN PLAY'
+      },
+      {
+        label: 'C. Complain to HR about intellectual property fairness.',
+        outcome: 'HR files a generic mediation note. The Board still sees Julian as the bold presenter and views you as a whiner.',
+        delta: { fear: -20, leverage: -10, optics: -10, protest: +10 },
+        verdict: 'CONDITIONED SHEEP MOVE'
+      }
+    ]
+  },
+  {
+    stage: 2,
+    arena: 'BUREAUCRACY • COALITION REVOLT',
+    title: 'Suppressing the Departmental Protest Petition',
+    situation: 'Thirty junior staff members have drafted a joint protest petition against your new performance-tracking rubric, threatening to escalate to the press and union board on Friday.',
+    choices: [
+      {
+        label: 'A. Blur the line: Announce a "Joint Rubric Calibration Council," appoint the two loudest ringleaders as co-chairs with 60-day review mandates, and keep the rubric running as a "pilot."',
+        outcome: 'Masterstroke! By blurring the line between pilot and policy and co-opting the leaders into administrative paperwork, the protest fractures within 72 hours while your tracking stays 100% active.',
+        delta: { fear: +15, leverage: +20, optics: +20, protest: -25 },
+        verdict: 'APEX MACHIAVELLIAN PLAY'
+      },
+      {
+        label: 'B. Cancel the rubric immediately and apologize so everyone loves you again.',
+        outcome: 'Fatal capitulation. Your subordinates now know that any coordinated tantrum will force you to fold. Mutiny risk skyrockets.',
+        delta: { fear: -30, leverage: -25, optics: -10, protest: +30 },
+        verdict: 'SHEEP CAPITULATION'
+      },
+      {
+        label: 'C. Send an all-caps email threatening to fire all 30 signatories today.',
+        outcome: 'Clumsy tyranny. Your email is leaked to journalists within an hour, creating martyrs and uniting the board against you.',
+        delta: { fear: +10, leverage: -20, optics: -30, protest: +35 },
+        verdict: 'BLIND BRUTE FORCE'
+      }
+    ]
+  },
+  {
+    stage: 3,
+    arena: 'BUSINESS & BOARDROOM • SUPPLIER HOLDUP',
+    title: 'The Monopoly Supplier Extortion',
+    situation: 'Your primary cloud-component vendor realizes you have a major product launch in 21 days and suddenly demands a 35% price hike to renew the contract.',
+    choices: [
+      {
+        label: 'A. Sign the 35% hike immediately out of panic and beg for mercy next year.',
+        outcome: 'You bleed margin and signal total dependency. Next year they will demand 50%.',
+        delta: { fear: -15, leverage: -25, optics: -10, protest: +10 },
+        verdict: 'WEAK NEGOTIATOR'
+      },
+      {
+        label: 'B. Sign a 60-day interim bridge at +10% while secretly migrating 70% of volume to a rival supplier, then terminate their exclusivity on Day 61 with zero warning.',
+        outcome: 'Chapter XVIII perfection: conceal your strike until your alternative arms are fully deployed, then sever dependency in a single stroke.',
+        delta: { fear: +25, leverage: +25, optics: +10, protest: -15 },
+        verdict: 'APEX MACHIAVELLIAN PLAY'
+      },
+      {
+        label: 'C. Refuse to pay and let your product launch crash in 21 days.',
+        outcome: 'Cutting off your nose to spite your face. Never start a war before your own supply lines are secured.',
+        delta: { fear: -5, leverage: -20, optics: -25, protest: +20 },
+        verdict: 'UNARMED PROPHET'
+      }
+    ]
+  },
+  {
+    stage: 4,
+    arena: 'SCHOOL & UNIVERSITY • LAB DOMINANCE',
+    title: 'The Prestigious Fellowship Bottleneck',
+    situation: 'Only one candidate from your department will receive the Dean’s Global Fellowship nomination. Your rival has higher raw GPA, but the 3-professor selection committee is deadlocked.',
+    choices: [
+      {
+        label: 'A. Hope the committee rewards your quiet sincerity and moral character.',
+        outcome: 'Committees reward institutional utility, not silent hope. Your rival takes the fellowship.',
+        delta: { fear: -10, leverage: -15, optics: -5, protest: +5 },
+        verdict: 'PASSIVE SHEEP'
+      },
+      {
+        label: 'B. Identify the swing professor’s upcoming grant renewal, build a bespoke preliminary dataset that solves his methodology gap, and present it as part of your fellowship proposal.',
+        outcome: 'You align the sovereign’s self-interest with your ascension. The swing professor champions you relentlessly and locks in your nomination.',
+        delta: { fear: +10, leverage: +25, optics: +20, protest: -10 },
+        verdict: 'APEX MACHIAVELLIAN PLAY'
+      },
+      {
+        label: 'C. Spread anonymous rumors about your rival on student forums.',
+        outcome: 'Low-level amateur move that traces back to your IP and disgusts the faculty.',
+        delta: { fear: -10, leverage: -20, optics: -25, protest: +20 },
+        verdict: 'CLUMSY CONSPIRATOR'
+      }
+    ]
+  },
+  {
+    stage: 5,
+    arena: 'WORKPLACE LEADERSHIP • THE STAR LIEUTENANT',
+    title: 'When Your Top Subordinate Grows Too Ambitious',
+    situation: 'Your highest-performing manager, Elena, has started having private lunches with your boss (the SVP) and subtly hinting that she is ready to replace you.',
+    choices: [
+      {
+        label: 'A. Nominate Elena to lead a high-profile, cross-border expansion taskforce in another time zone that reports to a separate matrix—removing her from your turf while appearing as her generous sponsor.',
+        outcome: 'Classic Florentine promotion-into-exile! You look magnanimous to the SVP, Elena is bogged down in a brutal remote turnaround, and your core citadel remains 100% under your direct command.',
+        delta: { fear: +15, leverage: +20, optics: +25, protest: -15 },
+        verdict: 'APEX MACHIAVELLIAN PLAY'
+      },
+      {
+        label: 'B. Publicly berate Elena in the weekly team meeting to show who is boss.',
+        outcome: 'You validate her narrative to the SVP that you are insecure and petty.',
+        delta: { fear: -5, leverage: -20, optics: -25, protest: +25 },
+        verdict: 'EMOTIONAL BLUNDER'
+      },
+      {
+        label: 'C. Ignore it and trust that Elena would never betray you because you mentored her.',
+        outcome: 'Chapter XVII warning: gratitude is broken the moment ambition calls. Six months later, you are reorganized out.',
+        delta: { fear: -25, leverage: -25, optics: -15, protest: +15 },
+        verdict: 'NAIVE SHEEP'
+      }
+    ]
+  }
+];
+
+const GAUNTLET_QUESTIONS = [
+  {
+    q: '1. In a cross-functional meeting, a rival VP smiles warmly and says: "We all admire how passionate your team is, even if the timeline was a bit optimistic for a group of your current experience." What dark psychological tactic is being deployed, and what is the Sovereign counter-move?',
+    options: [
+      { text: 'Tactic: Compliment-Wrapped Status Degradation (Negging/Framing). Counter: Never defend softly; calmly pivot by citing your team’s audited delivery beat vs. his division’s Q2 slippage.', correct: true, rationale: 'Correct! Defending your "experience" accepts his subordinate frame. Counter-framing with cold comparative metrics re-establishes dominance.' },
+      { text: 'Tactic: Friendly banter. Counter: Thank him for the compliment and promise to try harder next quarter.', correct: false, rationale: 'Incorrect. Accepting the frame cements your status as the junior subordinate in front of the room.' },
+      { text: 'Tactic: Provocation. Counter: Shout at him and demand an apology.', correct: false, rationale: 'Incorrect. Losing emotional composure hands him the exact optics victory he baited you for.' }
+    ]
+  },
+  {
+    q: '2. According to Machiavelli’s Chapter XVII doctrine on Fear vs. Love, why must a ruler prioritize being feared over being loved when both cannot be achieved simultaneously?',
+    options: [
+      { text: 'Because love is a bond of obligation which selfish humans break whenever it serves their advantage, whereas fear is held by a dread of punishment that stays under the ruler’s control.', correct: true, rationale: 'Exact canonical doctrine. Men love at their own pleasure, but fear at the pleasure of the Prince.' },
+      { text: 'Because a ruler should aim to be hated and cruel at all times to everyone.', correct: false, rationale: 'False! Machiavelli explicitly warns that a Prince must inspire fear while strictly avoiding hatred.' },
+      { text: 'Because fear makes subordinates love you emotionally over time.', correct: false, rationale: 'Incorrect. Fear is not about emotional affection; it is about reliable structural deterrence.' }
+    ]
+  },
+  {
+    q: '3. When an institutional leader wants to suppress a growing protest or employee revolt without triggering media backlash, what does "blurring the line" entail?',
+    options: [
+      { text: 'Diffusing accountability across procedural committees, co-opting moderate ringleaders into advisory bodies, and disguising control changes behind familiar institutional labels.', correct: true, rationale: 'Spot on. Removing a clear target and splitting the coalition drains protest momentum silently.' },
+      { text: 'Surrendering all budget authority to the protestors immediately.', correct: false, rationale: 'Incorrect. Capitulation invites escalating demands.' },
+      { text: 'Publicly abolishing all rules and declaring personal dictatorship on social media.', correct: false, rationale: 'Incorrect. Overt theatrical tyranny unites all factions against you.' }
+    ]
+  },
+  {
+    q: '4. In Chapter VIII & VII (The Cesare Borgia / Remirro de Orco paradigm), how should a leader sequence necessary severities (cuts/penalties) versus rewards (bonuses/favors)?',
+    options: [
+      { text: 'Execute all severities in a single decisive stroke (ideally via an intermediary/system) so resentment doesn’t fester; distribute benefits gradually so each is savored.', correct: true, rationale: 'Masterful! Injuries done all at once offend less; benefits dripped out build continuous dependency.' },
+      { text: 'Give all rewards on Day 1 and inflict small punishments every week for a year.', correct: false, rationale: 'Catastrophic error. Weekly punishments keep subordinates in permanent mutinous resentment.' },
+      { text: 'Never punish anyone and hope problems resolve themselves.', correct: false, rationale: 'Chapter XVII warns that excessive mercy allows disorder to grow until the whole state is ruined.' }
+    ]
+  },
+  {
+    q: '5. A colleague privately asks for your candid negative opinion about the new CEO’s strategy, promising "this stays strictly between us." How does the Fox respond?',
+    options: [
+      { text: 'Assume every "confidential" gripe is an intelligence trap. Express measured strategic alignment that would flatter you if repeated verbatim to the CEO, while probing why the colleague is asking.', correct: true, rationale: 'Pure Fox discipline. Never hand a potential rival recorded or repeatable ammunition against your loyalty.' },
+      { text: 'Vent all your frustrations honestly to bond with your colleague.', correct: false, rationale: 'Sheep trap! You just handed your colleague a loaded weapon to trade for favor with the CEO.' },
+      { text: 'Refuse to speak to anyone in the office ever again.', correct: false, rationale: 'Isolation blinds your intelligence network. Engage warmly while revealing zero vulnerability.' }
+    ]
+  }
+];
+
+const AUDIT_QUESTIONS = [
+  {
+    id: 'aq1',
+    prompt: '1. When a subordinate or teammate misses a critical commitment with a sentimental excuse, your reflex is:',
+    sheepOption: 'Accept the excuse warmly, do their work yourself late at night, and hope they reciprocate next time (0 pts)',
+    hybridOption: 'Express mild annoyance but extend the deadline without structural penalty (10 pts)',
+    wolfOption: 'Remain icy calm, log the variance formally, reallocate their high-upside scope immediately, and enforce a clear consequence (20 pts)'
+  },
+  {
+    id: 'aq2',
+    prompt: '2. In a workplace, college, or bureaucratic hierarchy, how do you view office politics and power dynamics?',
+    sheepOption: 'I avoid politics completely and believe pure hard work and kindness will be rewarded automatically (0 pts)',
+    hybridOption: 'I observe politics defensively so I don’t get stepped on, but rarely initiate plays (10 pts)',
+    wolfOption: 'I map every stakeholder’s self-interest, control information bottlenecks, and engineer coalitions proactively (20 pts)'
+  },
+  {
+    id: 'aq3',
+    prompt: '3. If given the choice between being universally liked as "harmless and nice" vs. respected and feared as "formidable and untouchable":',
+    sheepOption: 'I want everyone to love me and think I am a nice person (0 pts)',
+    hybridOption: 'I try to balance both equally even when people take advantage of my niceness (10 pts)',
+    wolfOption: 'I choose calibrated fear and unshakeable respect—never hated, never toyed with (20 pts)'
+  },
+  {
+    id: 'aq4',
+    prompt: '4. When a faction in your organization starts protesting or resisting your directive:',
+    sheepOption: 'I back down quickly or plead with them emotionally to see my side (0 pts)',
+    hybridOption: 'I argue with them publicly in long email threads (10 pts)',
+    wolfOption: 'I blur the line via procedural committees, co-opt key swing voices privately, and isolate the remaining agitators (20 pts)'
+  },
+  {
+    id: 'aq5',
+    prompt: '5. How much of your long-term ambition, next career move, and leverage do you reveal to peers?',
+    sheepOption: 'I share my plans, struggles, and next moves openly with coworkers and friends (0 pts)',
+    hybridOption: 'I tell only a few close colleagues (10 pts)',
+    wolfOption: 'I practice strict concealment; my moves are only visible once they are irreversible (20 pts)'
+  }
+];
+
+const COUNSELLING_TIERS = [
+  {
+    id: 'tier-initiate',
+    name: 'The Courtier',
+    subtitle: 'Foundational Deprogramming',
+    monthlyPrice: 190,
+    annualPrice: 152,
+    badge: 'ENTRY DOCTRINE',
+    features: [
+      'Monthly 45-min 1-on-1 Mindset Deprogramming Session',
+      'Full Corporate & Campus Power Mapping Audit',
+      'Encrypted Vault Access to All 12 Florentine Playbooks',
+      'Passive-Aggressive Rival Counter-Script Library'
+    ]
+  },
+  {
+    id: 'tier-consigliere',
+    name: 'The Consigliere',
+    subtitle: 'Executive & Institutional Ascendance',
+    monthlyPrice: 490,
+    annualPrice: 392,
+    badge: 'MOST COMMISSIONED',
+    featured: true,
+    features: [
+      'Bi-Weekly 60-min War Room Strategy Sessions',
+      'Bespoke "Fear vs. Love" Subordinate Architecture',
+      'Live Crisis & Protest Suppression Line-Blurring Playbook',
+      '24/7 Encrypted Dispatch Review for High-Stakes Emails'
+    ]
+  },
+  {
+    id: 'tier-sovereign',
+    name: 'Sovereign Apex',
+    subtitle: 'Boardroom, M&A & Bureaucratic Dominion',
+    monthlyPrice: 1490,
+    annualPrice: 1192,
+    badge: 'ELITE PYRAMID',
+    features: [
+      'Weekly Unlimited War Room Advisory + On-Call Red Team',
+      'Hostile Boardroom / Bureaucratic Coalition Engineering',
+      'Psychological Profiling of Your Top 5 Rivals & Counterparties',
+      'Direct Chief Strategist Retainer & Custom Simulation Models'
+    ]
+  }
+];
+
+const FAQ_ITEMS = [
+  {
+    q: 'Does Machiavellify advocate mindless cruelty or illegal behavior?',
+    a: 'Never. Mindless cruelty is the mark of a stupid brute who quickly ends up deposed or imprisoned. In Chapter VIII and XVII, Machiavelli explicitly condemns gratuitous abuse because it generates hatred—the one force that destroys a ruler. Machiavellify teaches legal, structural, psychological mastery: understanding leverage, incentives, procedural rules, strategic ambiguity, and calibrated authority so you are never exploited by those who already play by these rules at the top.'
+  },
+  {
+    q: 'Why does Machiavelli insist it is safer to be feared than loved?',
+    a: 'Because love depends on the other person’s fluctuating emotions and convenience ("men being selfish, break the chain of obligation whenever it serves their advantage"). Fear—defined as the rational certainty that crossing you or failing their duty carries an unavoidable consequence—remains 100% under your sovereign control.'
+  },
+  {
+    q: 'How do these 16th-century Florentine principles apply to a modern corporate office or college?',
+    a: 'Human software has not updated since 1513. Whether in the Medici court, a SaaS executive suite, a university tenure committee, or a ministry bureaucracy, scarce resources (promotions, capital, prestige, tenure) are allocated through coalition building, optics management, information asymmetry, and deterrence.'
+  },
+  {
+    q: 'What does "blurring the line" to suppress protests mean in practice?',
+    a: 'When an opposition bloc forms, they need a sharp polarization line ("Us vs. The Tyrant") to recruit followers. You blur that line by adopting their vocabulary, routing unpopular necessities through technical sub-committees, offering selective concessions to divide pragmatists from ideologues, and letting procedural timelines exhaust their outrage.'
+  }
+];
+
+
+// ============================================================================
+// MACHIAVELLIFY APPLICATION STATE & STORAGE ENGINE
+// ============================================================================
+
+const AppState = {
+  selectedPyramidTier: 'tier-1',
+  activeArenaId: 'corporate',
+  activeMaximFilter: 'all',
+  activeGameTab: 'gambit',
+  activeBlogCat: 'all',
+  annualBilling: false,
+  currentArticleId: null,
+  user: null,
+  savedVaultItems: [],
+  bookings: [],
+  dispatches: [],
+  intrigue: {
+    stageIndex: 0,
+    fear: 70,
+    leverage: 65,
+    optics: 60,
+    protest: 20,
+    history: []
+  },
+  gauntlet: {
+    currentQ: 0,
+    score: 0,
+    answered: false
+  },
+  gambit: {
+    gridSize: 8,
+    turn: 1,
+    maxTurns: 25,
+    score: 0,
+    highScore: 0,
+    fearAura: 100,
+    foxCharges: 3,
+    lionCharges: 2,
+    soundEnabled: true,
+    gameOver: false,
+    player: { x: 0, y: 0 },
+    nodes: [],
+    rebels: [],
+    snares: [],
+    logs: []
+  }
+};
+
+function loadPersistedState() {
+  try {
+    const savedVault = localStorage.getItem('machiavellify_vault');
+    if (savedVault) AppState.savedVaultItems = JSON.parse(savedVault);
+    const savedUser = localStorage.getItem('machiavellify_user');
+    if (savedUser) AppState.user = JSON.parse(savedUser);
+    const savedBookings = localStorage.getItem('machiavellify_bookings');
+    if (savedBookings) AppState.bookings = JSON.parse(savedBookings);
+    const savedHigh = localStorage.getItem('machiavellify_gambit_high');
+    if (savedHigh) AppState.gambit.highScore = parseInt(savedHigh, 10) || 0;
+  } catch (e) {
+    // Sandbox safe fallback
+  }
+}
+
+function savePersistedState() {
+  try {
+    localStorage.setItem('machiavellify_vault', JSON.stringify(AppState.savedVaultItems));
+    if (AppState.user) {
+      localStorage.setItem('machiavellify_user', JSON.stringify(AppState.user));
+    } else {
+      localStorage.removeItem('machiavellify_user');
+    }
+    localStorage.setItem('machiavellify_bookings', JSON.stringify(AppState.bookings));
+    localStorage.setItem('machiavellify_gambit_high', String(AppState.gambit.highScore));
+  } catch (e) {
+    // Sandbox safe fallback
+  }
+}
+
+let toastTimer = null;
+function showToast(msg) {
+  const banner = document.getElementById('toastBanner');
+  const textEl = document.getElementById('toastMessageText');
+  if (!banner || !textEl) return;
+  textEl.textContent = msg;
+  banner.classList.remove('hidden');
+  if (toastTimer) clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => {
+    banner.classList.add('hidden');
+  }, 3200);
+}
+
+// ============================================================================
+// SYNTHESIZED WEB AUDIO SOUND ENGINE (NO EXTERNAL AUDIO FILES)
+// ============================================================================
+let audioCtx = null;
+function playTacticalSound(type) {
+  if (!AppState.gambit.soundEnabled) return;
+  try {
+    const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+    if (!AudioContextClass) return;
+    if (!audioCtx) audioCtx = new AudioContextClass();
+    if (audioCtx.state === 'suspended') audioCtx.resume();
+
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+
+    const now = audioCtx.currentTime;
+    if (type === 'move') {
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(280, now);
+      osc.frequency.exponentialRampToValueAtTime(420, now + 0.08);
+      gain.gain.setValueAtTime(0.08, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.09);
+      osc.start(now);
+      osc.stop(now + 0.09);
+    } else if (type === 'capture') {
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(440, now);
+      osc.frequency.exponentialRampToValueAtTime(880, now + 0.18);
+      gain.gain.setValueAtTime(0.14, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.19);
+      osc.start(now);
+      osc.stop(now + 0.19);
+    } else if (type === 'purge') {
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(190, now);
+      osc.frequency.exponentialRampToValueAtTime(95, now + 0.25);
+      gain.gain.setValueAtTime(0.16, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.26);
+      osc.start(now);
+      osc.stop(now + 0.26);
+    } else if (type === 'hit') {
+      osc.type = 'square';
+      osc.frequency.setValueAtTime(150, now);
+      osc.frequency.exponentialRampToValueAtTime(70, now + 0.2);
+      gain.gain.setValueAtTime(0.12, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.21);
+      osc.start(now);
+      osc.stop(now + 0.21);
+    }
+  } catch (e) {
+    // Ignore audio context restrictions
+  }
+}
+
+// ============================================================================
+// 1. PYRAMID OF POWER INTERACTIVE VISUALIZER
+// ============================================================================
+function renderPyramidVisualizer() {
+  const container = document.getElementById('pyramidVisualizer');
+  const detailBox = document.getElementById('pyramidDetailBox');
+  if (!container || !detailBox) return;
+
+  const widths = ['w-3/5', 'w-4/6', 'w-5/6', 'w-11/12', 'w-full'];
+  container.innerHTML = PYRAMID_TIERS.map((tier, idx) => {
+    const isSelected = tier.id === AppState.selectedPyramidTier;
+    const activeRing = isSelected ? 'ring-2 ring-amber-400 scale-[1.01]' : 'opacity-85 hover:opacity-100';
+    return `
+      <div class="flex justify-center">
+        <button type="button" data-pyramid-id="${tier.id}" class="pyramid-tier-btn pyramid-tier ${widths[idx]} py-2.5 px-4 rounded-lg bg-gradient-to-r ${tier.color} ${activeRing} border border-white/15 flex items-center justify-between text-xs shadow-md">
+          <span class="font-mono-code uppercase tracking-wider truncate">${tier.rank}: ${tier.title}</span>
+          <span class="hidden sm:inline text-[10px] opacity-90 ml-2 shrink-0">${tier.pop}</span>
+        </button>
+      </div>
+    `;
+  }).join('');
+
+  const selected = PYRAMID_TIERS.find(t => t.id === AppState.selectedPyramidTier) || PYRAMID_TIERS[0];
+  detailBox.innerHTML = `
+    <div class="flex items-center justify-between">
+      <span class="text-[11px] font-mono-code uppercase text-amber-400 font-bold">${selected.rank} • ${selected.pop}</span>
+      <span class="text-[10px] font-mono-code text-slate-400">STRUCTURAL REALITY</span>
+    </div>
+    <div class="font-cinzel text-sm sm:text-base font-bold text-white">${selected.title}</div>
+    <p class="text-xs text-slate-300 leading-relaxed">${selected.summary}</p>
+    <div class="pt-1 border-t border-white/10 text-xs text-amber-300">
+      <strong>Machiavellian Directive:</strong> ${selected.tactic}
+    </div>
+  `;
+
+  container.querySelectorAll('.pyramid-tier-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      AppState.selectedPyramidTier = btn.getAttribute('data-pyramid-id');
+      renderPyramidVisualizer();
+    });
+  });
+}
+
+// ============================================================================
+// 2. CENTRAL COMMAND SEARCH BAR (OMNISEARCH ENGINE)
+// ============================================================================
+function executeCentralSearch() {
+  const inputEl = document.getElementById('centralSearchInput');
+  const catEl = document.getElementById('centralSearchCategory');
+  const resultsEl = document.getElementById('centralSearchResults');
+  const countEl = document.getElementById('centralSearchResultCount');
+  const clearBtn = document.getElementById('clearCentralSearchBtn');
+  if (!inputEl || !catEl || !resultsEl || !countEl) return;
+
+  const query = inputEl.value.trim().toLowerCase();
+  const cat = catEl.value;
+
+  if (!query && cat === 'all') {
+    resultsEl.classList.add('hidden');
+    if (clearBtn) clearBtn.classList.add('hidden');
+    countEl.textContent = 'Type a keyword or click a tag below to filter all doctrines';
+    return;
+  }
+
+  if (clearBtn) clearBtn.classList.toggle('hidden', !query);
+
+  const matches = [];
+
+  if (cat === 'all' || cat === 'arena') {
+    ARENAS_DATA.forEach(a => {
+      const hay = `${a.name} ${a.headline} ${a.sheepIllusion} ${a.wolfReality} ${a.fearVsLoveApplication} ${a.blurringTheLineProtocol}`.toLowerCase();
+      if (!query || hay.includes(query)) {
+        matches.push({
+          type: 'REAL-WORLD ARENA',
+          title: a.headline,
+          desc: a.wolfReality,
+          actionType: 'arena',
+          targetId: a.id
+        });
+      }
+    });
+  }
+
+  if (cat === 'all' || cat === 'maxim') {
+    MAXIMS_DATA.forEach(m => {
+      const hay = `${m.title} ${m.chapter} ${m.category} ${m.quote} ${m.analysis} ${m.realWorldMove}`.toLowerCase();
+      if (!query || hay.includes(query)) {
+        matches.push({
+          type: `MAXIM • ${m.chapter}`,
+          title: m.title,
+          desc: `"${m.quote}" — ${m.realWorldMove}`,
+          actionType: 'maxim',
+          targetId: m.id
+        });
+      }
+    });
+  }
+
+  if (cat === 'all' || cat === 'blog') {
+    BLOG_POSTS.forEach(b => {
+      const hay = `${b.title} ${b.category} ${b.excerpt} ${b.tags.join(' ')} ${b.body.join(' ')}`.toLowerCase();
+      if (!query || hay.includes(query)) {
+        matches.push({
+          type: `BLOG DOSSIER • ${b.category}`,
+          title: b.title,
+          desc: b.excerpt,
+          actionType: 'blog',
+          targetId: b.id
+        });
+      }
+    });
+  }
+
+  if (cat === 'all' || cat === 'game') {
+    const gamesList = [
+      { id: 'gambit', title: "The Sovereign's Gambit (8x8 Citadel Board Game)", desc: 'Command Fox snares and Lion fear purges on an interactive tactical grid.' },
+      { id: 'intrigue', title: 'Realpolitik Dilemma & Crisis Simulator', desc: 'Test your instincts in corporate, academic, and bureaucratic protest crises.' },
+      { id: 'gauntlet', title: 'Dark Psychology & Manipulation Mastery Gauntlet', desc: 'Detect double binds, passive-aggressive traps, and status degradation.' }
+    ];
+    gamesList.forEach(g => {
+      if (!query || `${g.title} ${g.desc} game simulator`.toLowerCase().includes(query)) {
+        matches.push({
+          type: 'STRATEGIC GAME',
+          title: g.title,
+          desc: g.desc,
+          actionType: 'game',
+          targetId: g.id
+        });
+      }
+    });
+  }
+
+  if (cat === 'all' || cat === 'counselling') {
+    COUNSELLING_TIERS.forEach(t => {
+      const hay = `${t.name} ${t.subtitle} ${t.features.join(' ')} counselling war room audit`.toLowerCase();
+      if (!query || hay.includes(query)) {
+        matches.push({
+          type: 'COUNSELLING RETAINER',
+          title: `${t.name} — ${t.subtitle}`,
+          desc: t.features.join(' • '),
+          actionType: 'counselling',
+          targetId: t.id
+        });
+      }
+    });
+  }
+
+  countEl.textContent = `${matches.length} intelligence match${matches.length === 1 ? '' : 'es'} found`;
+  resultsEl.classList.remove('hidden');
+
+  if (matches.length === 0) {
+    resultsEl.innerHTML = `
+      <div class="col-span-full p-4 rounded-xl bg-obsidian-950 border border-white/10 text-xs text-slate-400">
+        No intelligence matches found for "<strong>${ query }</strong>". Try searching <em>fear</em>, <em>corporate</em>, <em>protest</em>, <em>fox</em>, or <em>college</em>.
+      </div>
+    `;
+    return;
+  }
+
+  resultsEl.innerHTML = matches.map((m, i) => `
+    <div class="p-3.5 rounded-xl bg-obsidian-950 border border-white/10 hover:border-amber-400/50 flex flex-col justify-between gap-2 transition">
+      <div>
+        <span class="text-[10px] font-mono-code uppercase text-amber-400 block">${m.type}</span>
+        <h4 class="font-cinzel text-sm font-bold text-white mt-0.5">${m.title}</h4>
+        <p class="text-xs text-slate-400 mt-1 line-clamp-2">${m.desc}</p>
+      </div>
+      <button type="button" data-res-idx="${i}" class="search-result-jump-btn self-start text-[11px] font-mono-code text-crimson-400 hover:text-amber-300 uppercase tracking-wider mt-1">
+        Open Intelligence →
+      </button>
+    </div>
+  `).join('');
+
+  resultsEl.querySelectorAll('.search-result-jump-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = matches[parseInt(btn.getAttribute('data-res-idx'), 10)];
+      if (!item) return;
+      if (item.actionType === 'arena') {
+        AppState.activeArenaId = item.targetId;
+        renderArenasSection();
+        document.getElementById('arenasSection').scrollIntoView({ behavior: 'smooth' });
+      } else if (item.actionType === 'maxim') {
+        AppState.activeMaximFilter = 'all';
+        renderMaximsGrid();
+        document.getElementById('cornerSection').scrollIntoView({ behavior: 'smooth' });
+      } else if (item.actionType === 'blog') {
+        openArticleModal(item.targetId);
+      } else if (item.actionType === 'game') {
+        switchGameTab(item.targetId);
+        document.getElementById('gamesSection').scrollIntoView({ behavior: 'smooth' });
+      } else if (item.actionType === 'counselling') {
+        document.getElementById('counsellingSection').scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+}
+
+// ============================================================================
+// 3. REAL-WORLD ARENAS SECTION (Corporate, Business, College, Workplace, Bureaucracy)
+// ============================================================================
+function renderArenasSection() {
+  const tabsEl = document.getElementById('arenaTabsContainer');
+  const detailEl = document.getElementById('arenaDetailView');
+  if (!tabsEl || !detailEl) return;
+
+  tabsEl.innerHTML = ARENAS_DATA.map(a => {
+    const active = a.id === AppState.activeArenaId;
+    const cls = active
+      ? 'bg-gradient-to-r from-crimson-700 to-crimson-600 text-white border-crimson-400/50 shadow-lg'
+      : 'bg-obsidian-800 text-slate-300 hover:text-amber-400 border-white/10';
+    return `
+      <button type="button" data-arena-id="${a.id}" class="arena-tab-btn px-3.5 py-2 rounded-xl border text-xs font-bold uppercase tracking-wider transition ${cls}">
+        ${a.name}
+      </button>
+    `;
+  }).join('');
+
+  const arena = ARENAS_DATA.find(a => a.id === AppState.activeArenaId) || ARENAS_DATA[0];
+
+  detailEl.innerHTML = `
+    <!-- Left 7 Cols: Sheep vs Wolf + Fear over Love + Line Blurring -->
+    <div class="lg:col-span-7 card-surface rounded-2xl p-5 sm:p-7 border border-white/10 flex flex-col justify-between space-y-5">
+      <div>
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+          <span class="px-2.5 py-1 rounded bg-crimson-950 border border-crimson-500/40 text-crimson-300 font-mono-code text-[11px] uppercase">${arena.badge}</span>
+          <button type="button" data-save-arena="${arena.id}" class="save-arena-btn text-xs font-mono-code text-amber-400 hover:underline">
+            ★ Save Playbook to Vault
+          </button>
+        </div>
+        <h3 class="font-cinzel text-xl sm:text-2xl font-black text-white">${arena.headline}</h3>
+        <blockquote class="mt-3 p-3 rounded-xl bg-obsidian-950 border-l-4 border-amber-500 text-xs sm:text-sm italic text-amber-200/90">
+          ${arena.quote}
+        </blockquote>
+      </div>
+
+      <!-- Contrast Cards: Sheep Costume vs Predator Doctrine -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="p-4 rounded-xl bg-obsidian-950/90 border border-white/10">
+          <div class="text-[11px] font-mono-code uppercase text-slate-400 mb-1">🐑 THE SHEEP ILLUSION (WEAKNESS)</div>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">${arena.sheepIllusion}</p>
+        </div>
+        <div class="p-4 rounded-xl bg-crimson-950/30 border border-crimson-500/40">
+          <div class="text-[11px] font-mono-code uppercase text-amber-400 mb-1">🐺 THE WOLF REALITY (PREDATOR)</div>
+          <p class="text-xs sm:text-sm text-slate-200 leading-relaxed">${arena.wolfReality}</p>
+        </div>
+      </div>
+
+      <!-- Fear vs Love & Blurring the Line Boxes -->
+      <div class="space-y-3">
+        <div class="p-4 rounded-xl bg-obsidian-950 border border-amber-500/30">
+          <div class="text-xs font-cinzel font-bold text-amber-400 uppercase mb-1">Applying "Feared Rather Than Loved" in ${arena.name}</div>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">${arena.fearVsLoveApplication}</p>
+        </div>
+        <div class="p-4 rounded-xl bg-obsidian-950 border border-white/10">
+          <div class="text-xs font-cinzel font-bold text-crimson-400 uppercase mb-1">Suppressing Protests &amp; Resistance by "Blurring the Line"</div>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">${arena.blurringTheLineProtocol}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right 5 Cols: 4 Tactical Execution Plays -->
+    <div class="lg:col-span-5 card-surface rounded-2xl p-5 sm:p-7 border border-amber-500/30 flex flex-col justify-between space-y-4">
+      <div>
+        <span class="text-[11px] font-mono-code uppercase text-amber-400">STEP-BY-STEP EXECUTION</span>
+        <h4 class="font-cinzel text-lg sm:text-xl font-bold text-white mt-0.5 mb-4">Four Tactical Power Plays for ${arena.name}</h4>
+        <div class="space-y-3">
+          ${arena.playbook.map((step, i) => `
+            <div class="p-3.5 rounded-xl bg-obsidian-950 border border-white/10 hover:border-amber-500/40 transition">
+              <div class="flex items-center gap-2 font-cinzel font-bold text-sm text-amber-400">
+                <span class="w-5 h-5 rounded bg-amber-500/20 text-amber-300 flex items-center justify-center text-xs font-mono-code">0${i + 1}</span>
+                <span>${step.title}</span>
+              </div>
+              <p class="text-xs text-slate-300 mt-1.5 leading-relaxed">${step.desc}</p>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+
+      <div class="pt-3 border-t border-white/10 flex flex-wrap items-center justify-between gap-2">
+        <span class="text-xs text-slate-400">Ready to test this arena under pressure?</span>
+        <button type="button" id="arenaLaunchSimulatorBtn" class="px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-obsidian-950 font-bold text-xs uppercase tracking-wider transition">
+          Simulate Crisis →
+        </button>
+      </div>
+    </div>
+  `;
+
+  tabsEl.querySelectorAll('.arena-tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      AppState.activeArenaId = btn.getAttribute('data-arena-id');
+      renderArenasSection();
+    });
+  });
+
+  const saveBtn = detailEl.querySelector('.save-arena-btn');
+  if (saveBtn) {
+    saveBtn.addEventListener('click', () => {
+      saveItemToVault(`Arena Playbook: ${arena.headline}`, 'ARENA PLAYBOOK');
+    });
+  }
+
+  const simBtn = document.getElementById('arenaLaunchSimulatorBtn');
+  if (simBtn) {
+    simBtn.addEventListener('click', () => {
+      switchGameTab('intrigue');
+      document.getElementById('gamesSection').scrollIntoView({ behavior: 'smooth' });
+    });
+  }
+}
+
+
+// ============================================================================
+// 4. MACHIAVELLI'S CORNER: TELEMETRY CALCULATOR, CHART.JS RADAR & MAXIMS
+// ============================================================================
+let radarChartInstance = null;
+
+function updateMachiavelliTelemetry() {
+  const sFear = parseInt(document.getElementById('sliderFear')?.value || '85', 10);
+  const sLove = parseInt(document.getElementById('sliderLove')?.value || '25', 10);
+  const sBlur = parseInt(document.getElementById('sliderBlur')?.value || '90', 10);
+  const sDep = parseInt(document.getElementById('sliderDep')?.value || '80', 10);
+  const sFox = parseInt(document.getElementById('sliderFox')?.value || '88', 10);
+
+  document.getElementById('valFearSlider').textContent = sFear + '%';
+  document.getElementById('valLoveSlider').textContent = sLove + '%';
+  document.getElementById('valBlurSlider').textContent = sBlur + '%';
+  document.getElementById('valDepSlider').textContent = sDep + '%';
+  document.getElementById('valFoxSlider').textContent = sFox + '%';
+
+  // Compute Sovereign Control & Mutiny Risk based on Machiavellian axioms
+  const loveVulnerabilityPenalty = Math.max(0, (sLove - sFear) * 0.45);
+  const rawControl = (sFear * 0.30) + (sBlur * 0.25) + (sDep * 0.20) + (sFox * 0.25) - loveVulnerabilityPenalty;
+  const controlScore = Math.max(5, Math.min(100, Math.round(rawControl)));
+
+  const rawMutiny = Math.max(2, Math.min(98, Math.round(100 - (sFear * 0.35 + sBlur * 0.35 + sDep * 0.30) + (sLove * 0.20))));
+
+  let archetype = 'THE LION-FOX SOVEREIGN';
+  let verdictHtml = '';
+  if (sLove > sFear + 15) {
+    archetype = 'UNARMED PROPHET (SHEEP)';
+    verdictHtml = `<div class="text-crimson-400 font-bold text-xs uppercase">⚠️ CRITICAL VULNERABILITY: LOVE EXCEEDS FEAR</div>
+      <p class="text-xs text-slate-300">You are relying on sentimental gratitude (${sLove}%) over structural dread (${sFear}%). Per Chapter XVII, your subordinates will abandon or overthrow you at the first sign of crisis.</p>`;
+  } else if (sFear > 75 && sBlur < 40) {
+    archetype = 'EXPOSED LION (BRUTE)';
+    verdictHtml = `<div class="text-amber-400 font-bold text-xs uppercase">⚡ WARNING: HIGH FEAR WITHOUT LINE-BLURRING</div>
+      <p class="text-xs text-slate-300">Your authority is feared (${sFear}%), but your low line-blurring (${sBlur}%) makes you a visible target for united protests. Increase procedural ambiguity immediately.</p>`;
+  } else if (controlScore >= 80) {
+    archetype = 'APEX LION-FOX PRINCE';
+    verdictHtml = `<div class="text-emerald-400 font-bold text-xs uppercase">✓ OPTIMAL FLORENTINE EQUILIBRIUM</div>
+      <p class="text-xs text-slate-300">Calibrated dread (${sFear}%), high subordinate dependency (${sDep}%), and masterful line-blurring (${sBlur}%) reduce protest risk to ${rawMutiny}%. Your citadel is unassailable.</p>`;
+  } else {
+    archetype = 'TACTICAL COURTIER';
+    verdictHtml = `<div class="text-amber-300 font-bold text-xs uppercase">MODERATE REGIME STABILITY</div>
+      <p class="text-xs text-slate-300">Your position holds, but increasing Information Asymmetry (Fox Index) and Consequence Certainty will lock in total dominance.</p>`;
+  }
+
+  document.getElementById('metricControlScore').textContent = `${controlScore}/100`;
+  document.getElementById('metricMutinyRisk').textContent = `${rawMutiny}%`;
+  document.getElementById('metricArchetype').textContent = archetype;
+  document.getElementById('telemetryVerdictBox').innerHTML = verdictHtml;
+
+  const ctx = document.getElementById('machiavelliRadarChart');
+  if (ctx && typeof Chart !== 'undefined') {
+    const dataValues = [sFear, 100 - sLove, sBlur, sDep, sFox];
+    if (!radarChartInstance) {
+      radarChartInstance = new Chart(ctx, {
+        type: 'radar',
+        data: {
+          labels: ['Dread (Fear)', 'Emotional Detachment', 'Line-Blurring', 'Subordinate Dependency', 'Fox Deception'],
+          datasets: [{
+            label: 'Sovereign Power Profile',
+            data: dataValues,
+            backgroundColor: 'rgba(225, 29, 72, 0.25)',
+            borderColor: '#f59e0b',
+            pointBackgroundColor: '#e11d48',
+            pointBorderColor: '#fff',
+            borderWidth: 2
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            r: {
+              min: 0,
+              max: 100,
+              angleLines: { color: 'rgba(255,255,255,0.1)' },
+              grid: { color: 'rgba(255,255,255,0.1)' },
+              pointLabels: { color: '#cbd5e1', font: { size: 11, family: 'Inter' } },
+              ticks: { display: false }
+            }
+          },
+          plugins: {
+            legend: { labels: { color: '#fcd34d', font: { size: 11 } } }
+          }
+        }
+      });
+    } else {
+      radarChartInstance.data.datasets[0].data = dataValues;
+      radarChartInstance.update();
+    }
+  }
+}
+
+function renderMaximsGrid() {
+  const grid = document.getElementById('maximsGrid');
+  if (!grid) return;
+  const filtered = AppState.activeMaximFilter === 'all'
+    ? MAXIMS_DATA
+    : MAXIMS_DATA.filter(m => m.category === AppState.activeMaximFilter);
+
+  grid.innerHTML = filtered.map(m => `
+    <div class="card-surface rounded-2xl p-5 border border-white/10 flex flex-col justify-between space-y-4">
+      <div>
+        <div class="flex items-center justify-between gap-2 text-[11px] font-mono-code mb-2">
+          <span class="text-amber-400 uppercase">${m.chapter}</span>
+          <span class="px-2 py-0.5 rounded bg-obsidian-800 text-crimson-300 border border-white/10">${m.category}</span>
+        </div>
+        <h4 class="font-cinzel text-lg font-bold text-white">${m.title}</h4>
+        <blockquote class="mt-2 p-2.5 rounded-lg bg-obsidian-950 border-l-2 border-crimson-500 text-xs italic text-slate-200">
+          "${m.quote}"
+        </blockquote>
+        <p class="text-xs text-slate-300 mt-3 leading-relaxed">${m.analysis}</p>
+      </div>
+      <div class="pt-3 border-t border-white/10 space-y-2">
+        <div class="text-xs text-amber-300"><strong>Real-World Execution:</strong> ${m.realWorldMove}</div>
+        <button type="button" data-save-maxim="${m.id}" class="save-maxim-btn text-[11px] font-mono-code text-slate-400 hover:text-amber-400 uppercase tracking-wider">
+          ★ Save Law to Vault
+        </button>
+      </div>
+    </div>
+  `).join('');
+
+  grid.querySelectorAll('.save-maxim-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const m = MAXIMS_DATA.find(x => x.id === btn.getAttribute('data-save-maxim'));
+      if (m) saveItemToVault(`${m.title} (${m.chapter})`, 'FLORENTINE MAXIM');
+    });
+  });
+}
+
+// ============================================================================
+// 5. WAR GAMES SWITCHER & GAME 1: THE SOVEREIGN'S GAMBIT (HTML5 CANVAS)
+// ============================================================================
+function switchGameTab(tabId) {
+  AppState.activeGameTab = tabId;
+  document.querySelectorAll('.game-tab-btn').forEach(btn => {
+    const isAct = btn.getAttribute('data-game-tab') === tabId;
+    btn.className = isAct
+      ? 'game-tab-btn px-4 py-2.5 rounded-xl bg-amber-500 text-obsidian-950 font-bold text-xs uppercase tracking-wider transition'
+      : 'game-tab-btn px-4 py-2.5 rounded-xl bg-obsidian-800 text-slate-200 hover:bg-obsidian-700 border border-white/10 font-semibold text-xs uppercase tracking-wider transition';
+  });
+
+  document.getElementById('gamePanelGambit')?.classList.toggle('hidden', tabId !== 'gambit');
+  document.getElementById('gamePanelIntrigue')?.classList.toggle('hidden', tabId !== 'intrigue');
+  document.getElementById('gamePanelGauntlet')?.classList.toggle('hidden', tabId !== 'gauntlet');
+
+  if (tabId === 'gambit') {
+    resizeAndDrawGambitCanvas();
+  }
+}
+
+function initGambitGame() {
+  const g = AppState.gambit;
+  g.turn = 1;
+  g.score = 0;
+  g.fearAura = 100;
+  g.foxCharges = 3;
+  g.lionCharges = 2;
+  g.gameOver = false;
+  g.player = { x: 0, y: 0 };
+  g.snares = [];
+  g.nodes = [
+    { x: 2, y: 1 }, { x: 5, y: 1 }, { x: 1, y: 4 },
+    { x: 4, y: 4 }, { x: 6, y: 3 }, { x: 3, y: 6 }, { x: 7, y: 7 }
+  ];
+  g.rebels = [
+    { x: 7, y: 1 }, { x: 6, y: 5 }, { x: 2, y: 7 }
+  ];
+  g.logs = ['[Turn 1] Campaign begun. Seize green Influence Nodes and crush red Rebel factions.'];
+  updateGambitHUD();
+  resizeAndDrawGambitCanvas();
+}
+
+function addGambitLog(entry) {
+  AppState.gambit.logs.unshift(entry);
+  if (AppState.gambit.logs.length > 15) AppState.gambit.logs.pop();
+}
+
+function updateGambitHUD() {
+  const g = AppState.gambit;
+  if (g.score > g.highScore) {
+    g.highScore = g.score;
+    savePersistedState();
+  }
+  document.getElementById('gambitTurnText').textContent = `${g.turn}/${g.maxTurns}`;
+  document.getElementById('gambitScoreVal').textContent = String(g.score);
+  document.getElementById('gambitFearVal').textContent = `${g.fearAura}%`;
+  document.getElementById('gambitHighScoreVal').textContent = String(g.highScore);
+  document.getElementById('gambitFoxCharges').textContent = `${g.foxCharges} left`;
+  document.getElementById('gambitLionCharges').textContent = `${g.lionCharges} left`;
+
+  const statusEl = document.getElementById('gambitStatusBadge');
+  if (statusEl) {
+    if (g.gameOver) {
+      statusEl.textContent = g.fearAura <= 0 ? 'DEPOSED BY REBELS' : 'CAMPAIGN COMPLETE — SOVEREIGN VICTORY';
+      statusEl.className = 'px-2.5 py-1 rounded bg-crimson-700 text-white text-xs font-mono-code font-bold';
+    } else {
+      statusEl.textContent = `NODES LEFT: ${g.nodes.length} • REBELS: ${g.rebels.length}`;
+      statusEl.className = 'px-2.5 py-1 rounded bg-obsidian-800 text-amber-300 text-xs font-mono-code';
+    }
+  }
+
+  const logEl = document.getElementById('gambitBattleLog');
+  if (logEl) {
+    logEl.innerHTML = g.logs.map(l => `<div class="py-0.5 border-b border-white/5">${l}</div>`).join('');
+  }
+}
+
+function stepGambitTurn(dx, dy) {
+  const g = AppState.gambit;
+  if (g.gameOver) return;
+
+  const nx = Math.max(0, Math.min(g.gridSize - 1, g.player.x + dx));
+  const ny = Math.max(0, Math.min(g.gridSize - 1, g.player.y + dy));
+  g.player.x = nx;
+  g.player.y = ny;
+  playTacticalSound('move');
+
+  // Check if player captured an Influence Node
+  const nodeIdx = g.nodes.findIndex(n => n.x === nx && n.y === ny);
+  if (nodeIdx !== -1) {
+    g.nodes.splice(nodeIdx, 1);
+    g.score += 150;
+    playTacticalSound('capture');
+    addGambitLog(`[Turn ${g.turn}] Seized Institutional Node at (${nx + 1},${ny + 1})! +150 Power.`);
+  }
+
+  // Move Rebels toward player or randomly
+  for (let i = g.rebels.length - 1; i >= 0; i--) {
+    const r = g.rebels[i];
+    const stepX = r.x < g.player.x ? 1 : (r.x > g.player.x ? -1 : 0);
+    const stepY = r.y < g.player.y ? 1 : (r.y > g.player.y ? -1 : 0);
+    if (Math.random() < 0.65) {
+      if (Math.abs(g.player.x - r.x) >= Math.abs(g.player.y - r.y)) r.x += stepX;
+      else r.y += stepY;
+    }
+
+    // Check if rebel stepped on a Fox Snare
+    const snareIdx = g.snares.findIndex(s => s.x === r.x && s.y === r.y);
+    if (snareIdx !== -1) {
+      g.snares.splice(snareIdx, 1);
+      g.rebels.splice(i, 1);
+      g.score += 200;
+      playTacticalSound('capture');
+      addGambitLog(`[Turn ${g.turn}] Rebel faction ambushed by Fox Deception Snare! +200 Power.`);
+      continue;
+    }
+
+    // Check if rebel collided with Prince
+    if (r.x === g.player.x && r.y === g.player.y) {
+      g.fearAura = Math.max(0, g.fearAura - 25);
+      g.score = Math.max(0, g.score - 50);
+      playTacticalSound('hit');
+      addGambitLog(`[Turn ${g.turn}] Conspirator clash at (${r.x + 1},${r.y + 1})! Fear Aura -25%.`);
+      // Push rebel back
+      r.x = Math.min(g.gridSize - 1, Math.max(0, r.x - stepX));
+    }
+  }
+
+  // Spawn new node or rebel periodically to keep board dynamic
+  if (g.nodes.length === 0) {
+    g.score += 500;
+    g.gameOver = true;
+    addGambitLog(`[Turn ${g.turn}] TOTAL DOMINION ACHIEVED! +500 Sovereign Bonus!`);
+    showToast('Citadel Conquered! +500 Bonus Points!');
+  } else if (g.fearAura <= 0 || g.turn >= g.maxTurns) {
+    g.gameOver = true;
+    addGambitLog(`[Turn ${g.turn}] Campaign concluded. Final Power Score: ${g.score}.`);
+  } else {
+    g.turn += 1;
+  }
+
+  updateGambitHUD();
+  resizeAndDrawGambitCanvas();
+}
+
+function deployFoxSnare() {
+  const g = AppState.gambit;
+  if (g.gameOver || g.foxCharges <= 0) return;
+  if (g.snares.some(s => s.x === g.player.x && s.y === g.player.y)) {
+    showToast('Snare already rigged on this tile.');
+    return;
+  }
+  g.foxCharges -= 1;
+  g.snares.push({ x: g.player.x, y: g.player.y });
+  playTacticalSound('move');
+  addGambitLog(`[Turn ${g.turn}] Fox Deception Snare planted at (${g.player.x + 1},${g.player.y + 1}).`);
+  updateGambitHUD();
+  resizeAndDrawGambitCanvas();
+}
+
+function unleashLionPurge() {
+  const g = AppState.gambit;
+  if (g.gameOver || g.lionCharges <= 0) return;
+  g.lionCharges -= 1;
+  playTacticalSound('purge');
+  let purged = 0;
+  for (let i = g.rebels.length - 1; i >= 0; i--) {
+    const r = g.rebels[i];
+    if (Math.abs(r.x - g.player.x) <= 2 && Math.abs(r.y - g.player.y) <= 2) {
+      g.rebels.splice(i, 1);
+      purged += 1;
+      g.score += 250;
+    }
+  }
+  if (purged > 0) {
+    addGambitLog(`[Turn ${g.turn}] LION FEAR PURGE crushed ${purged} rebel faction(s)! +${purged * 250} Power.`);
+    showToast(`Lion Purge eliminated ${purged} rebel faction(s)!`);
+  } else {
+    addGambitLog(`[Turn ${g.turn}] Lion Decree roared, but no rebels were within 2 tiles.`);
+  }
+  updateGambitHUD();
+  resizeAndDrawGambitCanvas();
+}
+
+function resizeAndDrawGambitCanvas() {
+  const canvas = document.getElementById('sovereignGambitCanvas');
+  const container = document.getElementById('gambitCanvasContainer');
+  if (!canvas || !container) return;
+
+  const rect = container.getBoundingClientRect();
+  const size = Math.max(260, Math.floor(rect.width));
+  canvas.width = size;
+  canvas.height = size;
+
+  const ctx = canvas.getContext('2d');
+  const g = AppState.gambit;
+  const cell = size / g.gridSize;
+
+  // Draw board background
+  ctx.fillStyle = '#070709';
+  ctx.fillRect(0, 0, size, size);
+
+  for (let y = 0; y < g.gridSize; y++) {
+    for (let x = 0; x < g.gridSize; x++) {
+      ctx.fillStyle = (x + y) % 2 === 0 ? '#0f111a' : '#161926';
+      ctx.fillRect(x * cell, y * cell, cell, cell);
+      ctx.strokeStyle = 'rgba(255,255,255,0.05)';
+      ctx.strokeRect(x * cell, y * cell, cell, cell);
+    }
+  }
+
+  // Draw Fox Snares (Purple tactical sigils)
+  g.snares.forEach(s => {
+    const cx = (s.x + 0.5) * cell;
+    const cy = (s.y + 0.5) * cell;
+    ctx.fillStyle = 'rgba(168, 85, 247, 0.35)';
+    ctx.beginPath();
+    ctx.arc(cx, cy, cell * 0.34, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.strokeStyle = '#c084fc';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+  });
+
+  // Draw Influence Nodes (Emerald Diamonds)
+  g.nodes.forEach(n => {
+    const cx = (n.x + 0.5) * cell;
+    const cy = (n.y + 0.5) * cell;
+    const r = cell * 0.28;
+    ctx.fillStyle = '#10b981';
+    ctx.beginPath();
+    ctx.moveTo(cx, cy - r);
+    ctx.lineTo(cx + r, cy);
+    ctx.lineTo(cx, cy + r);
+    ctx.lineTo(cx - r, cy);
+    ctx.closePath();
+    ctx.fill();
+  });
+
+  // Draw Rebel Factions (Crimson Circles)
+  g.rebels.forEach(r => {
+    const cx = (r.x + 0.5) * cell;
+    const cy = (r.y + 0.5) * cell;
+    ctx.fillStyle = '#e11d48';
+    ctx.beginPath();
+    ctx.arc(cx, cy, cell * 0.32, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = '#ffffff';
+    ctx.font = `bold ${Math.floor(cell * 0.32)}px Inter, sans-serif`;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('R', cx, cy);
+  });
+
+  // Draw Player Sovereign (Gold Crown Circle)
+  const px = (g.player.x + 0.5) * cell;
+  const py = (g.player.y + 0.5) * cell;
+  ctx.fillStyle = '#f59e0b';
+  ctx.beginPath();
+  ctx.arc(px, py, cell * 0.36, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.lineWidth = 2.5;
+  ctx.strokeStyle = '#fef3c7';
+  ctx.stroke();
+
+  ctx.fillStyle = '#070709';
+  ctx.font = `900 ${Math.floor(cell * 0.35)}px Cinzel, serif`;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText('♛', px, py + 1);
+}
+
+// ============================================================================
+// 6. GAME 2: COURT INTRIGUE & REALPOLITIK DILEMMA ENGINE
+// ============================================================================
+function renderIntrigueEngine() {
+  const st = AppState.intrigue;
+  document.getElementById('intrigueStatFear').textContent = `${st.fear}%`;
+  document.getElementById('intrigueBarFear').style.width = `${st.fear}%`;
+  document.getElementById('intrigueStatLeverage').textContent = `${st.leverage}%`;
+  document.getElementById('intrigueBarLeverage').style.width = `${st.leverage}%`;
+  document.getElementById('intrigueStatOptics').textContent = `${st.optics}%`;
+  document.getElementById('intrigueBarOptics').style.width = `${st.optics}%`;
+  document.getElementById('intrigueStatProtest').textContent = `${st.protest}%`;
+  document.getElementById('intrigueBarProtest').style.width = `${st.protest}%`;
+
+  const container = document.getElementById('intrigueStageContainer');
+  if (!container) return;
+
+  if (st.fear <= 15 || st.leverage <= 15 || st.protest >= 95) {
+    container.innerHTML = `
+      <div class="space-y-4 text-center my-auto py-8">
+        <span class="px-3 py-1 rounded bg-crimson-900 text-crimson-200 font-mono-code text-xs uppercase">REGIME COLLAPSED</span>
+        <h4 class="font-cinzel text-2xl font-black text-white">You Were Overthrown by Subordinate Mutiny</h4>
+        <p class="text-sm text-slate-300 max-w-xl mx-auto">
+          By violating Machiavelli’s laws—allowing either fear to evaporate or unblurred protests to coalesce—your rivals united and stripped your command.
+        </p>
+        <button type="button" id="intrigueTryAgainBtn" class="px-6 py-3 rounded-xl bg-amber-500 text-obsidian-950 font-bold text-xs uppercase tracking-wider">
+          Reclaim the Throne
+        </button>
+      </div>
+    `;
+    document.getElementById('intrigueTryAgainBtn')?.addEventListener('click', resetIntrigueGame);
+    return;
+  }
+
+  if (st.stageIndex >= INTRIGUE_SCENARIOS.length) {
+    container.innerHTML = `
+      <div class="space-y-4 text-center my-auto py-6">
+        <span class="px-3 py-1 rounded bg-amber-500/20 border border-amber-500/40 text-amber-300 font-mono-code text-xs uppercase">CAMPAIGN COMPLETE</span>
+        <h4 class="font-cinzel text-2xl sm:text-3xl font-black text-white">Supreme Sovereign of the Pyramid</h4>
+        <p class="text-sm text-slate-300 max-w-xl mx-auto">
+          You navigated every corporate, academic, business, and bureaucratic crisis with cold Florentine precision. Final Fear: <strong>${st.fear}%</strong> • Leverage: <strong>${st.leverage}%</strong> • Protest Risk: <strong>${st.protest}%</strong>.
+        </p>
+        <button type="button" id="intrigueReplayBtn" class="px-6 py-3 rounded-xl bg-amber-500 text-obsidian-950 font-bold text-xs uppercase tracking-wider">
+          Play Campaign Again
+        </button>
+      </div>
+    `;
+    document.getElementById('intrigueReplayBtn')?.addEventListener('click', resetIntrigueGame);
+    return;
+  }
+
+  const sc = INTRIGUE_SCENARIOS[st.stageIndex];
+  const lastLog = st.history.length > 0 ? st.history[st.history.length - 1] : null;
+
+  container.innerHTML = `
+    <div class="space-y-4">
+      ${lastLog ? `
+        <div class="p-3.5 rounded-xl bg-obsidian-900 border border-amber-500/40 text-xs space-y-1">
+          <div class="font-mono-code text-amber-400 font-bold uppercase">PREVIOUS OUTCOME: ${lastLog.verdict}</div>
+          <p class="text-slate-300">${lastLog.outcome}</p>
+        </div>
+      ` : ''}
+      <div class="flex items-center justify-between text-xs font-mono-code text-crimson-400">
+        <span>CRISIS ${sc.stage} OF ${INTRIGUE_SCENARIOS.length} • ${sc.arena}</span>
+      </div>
+      <h4 class="font-cinzel text-xl sm:text-2xl font-bold text-white">${sc.title}</h4>
+      <p class="text-xs sm:text-sm text-slate-200 leading-relaxed bg-obsidian-900/90 p-4 rounded-xl border border-white/10">
+        ${sc.situation}
+      </p>
+      <div class="space-y-2.5 pt-2">
+        ${sc.choices.map((c, idx) => `
+          <button type="button" data-choice-idx="${idx}" class="intrigue-choice-btn w-full text-left p-3.5 rounded-xl bg-obsidian-900 hover:bg-obsidian-800 border border-white/10 hover:border-amber-400/60 text-xs sm:text-sm text-slate-200 transition">
+            ${c.label}
+          </button>
+        `).join('')}
+      </div>
+    </div>
+  `;
+
+  container.querySelectorAll('.intrigue-choice-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const idx = parseInt(btn.getAttribute('data-choice-idx'), 10);
+      const choice = sc.choices[idx];
+      if (!choice) return;
+      st.fear = Math.max(0, Math.min(100, st.fear + choice.delta.fear));
+      st.leverage = Math.max(0, Math.min(100, st.leverage + choice.delta.leverage));
+      st.optics = Math.max(0, Math.min(100, st.optics + choice.delta.optics));
+      st.protest = Math.max(0, Math.min(100, st.protest + choice.delta.protest));
+      st.history.push({ verdict: choice.verdict, outcome: choice.outcome });
+      st.stageIndex += 1;
+      renderIntrigueEngine();
+    });
+  });
+}
+
+function resetIntrigueGame() {
+  AppState.intrigue = {
+    stageIndex: 0,
+    fear: 70,
+    leverage: 65,
+    optics: 60,
+    protest: 20,
+    history: []
+  };
+  renderIntrigueEngine();
+}
+
+// ============================================================================
+// 7. GAME 3: DARK PSYCHOLOGY & MANIPULATION MASTERY GAUNTLET
+// ============================================================================
+function renderGauntletQuiz() {
+  const container = document.getElementById('gauntletContainer');
+  if (!container) return;
+  const g = AppState.gauntlet;
+
+  if (g.currentQ >= GAUNTLET_QUESTIONS.length) {
+    container.innerHTML = `
+      <div class="text-center py-8 space-y-4">
+        <span class="px-3 py-1 rounded bg-amber-500/20 text-amber-300 font-mono-code text-xs uppercase">GAUNTLET COMPLETED</span>
+        <h3 class="font-cinzel text-2xl sm:text-3xl font-black text-white">Manipulation Mastery Score: ${g.score} / ${GAUNTLET_QUESTIONS.length}</h3>
+        <p class="text-sm text-slate-300 max-w-lg mx-auto">
+          ${g.score >= 4 ? 'You possess the eyes of the Florentine Fox. Covert gaslighting, status frames, and bureaucratic traps cannot snare you.' : 'Review the Machiavellify Dossiers closely—untrained instincts leave you vulnerable to covert operators.'}
+        </p>
+        <button type="button" id="restartGauntletBtn" class="px-6 py-3 rounded-xl bg-amber-500 text-obsidian-950 font-bold text-xs uppercase tracking-wider">
+          Run Gauntlet Again
+        </button>
+      </div>
+    `;
+    document.getElementById('restartGauntletBtn')?.addEventListener('click', () => {
+      AppState.gauntlet = { currentQ: 0, score: 0, answered: false };
+      renderGauntletQuiz();
+    });
+    return;
+  }
+
+  const item = GAUNTLET_QUESTIONS[g.currentQ];
+  container.innerHTML = `
+    <div class="space-y-5">
+      <div class="flex items-center justify-between text-xs font-mono-code text-amber-400">
+        <span>QUESTION ${g.currentQ + 1} OF ${GAUNTLET_QUESTIONS.length}</span>
+        <span>SCORE: ${g.score}/${GAUNTLET_QUESTIONS.length}</span>
+      </div>
+      <h4 class="font-cinzel text-lg sm:text-xl font-bold text-white leading-snug">${item.q}</h4>
+      <div class="space-y-3" id="gauntletOptionsList">
+        ${item.options.map((opt, i) => `
+          <button type="button" data-opt-idx="${i}" class="gauntlet-opt-btn w-full text-left p-4 rounded-xl bg-obsidian-950 hover:bg-obsidian-900 border border-white/10 text-xs sm:text-sm text-slate-200 transition">
+            ${opt.text}
+          </button>
+        `).join('')}
+      </div>
+      <div id="gauntletFeedbackBox" class="hidden p-4 rounded-xl bg-obsidian-950 border border-amber-500/40 text-xs space-y-2"></div>
+    </div>
+  `;
+
+  container.querySelectorAll('.gauntlet-opt-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (g.answered) return;
+      g.answered = true;
+      const idx = parseInt(btn.getAttribute('data-opt-idx'), 10);
+      const chosen = item.options[idx];
+      if (chosen.correct) g.score += 1;
+
+      const fb = document.getElementById('gauntletFeedbackBox');
+      if (fb) {
+        fb.classList.remove('hidden');
+        fb.innerHTML = `
+          <div class="font-bold uppercase ${chosen.correct ? 'text-emerald-400' : 'text-crimson-400'}">${chosen.correct ? '✓ PREDATOR PRECISION' : '✕ TACTICAL ERROR'}</div>
+          <p class="text-slate-300">${chosen.rationale}</p>
+          <button type="button" id="nextGauntletQBtn" class="mt-2 px-4 py-2 rounded-lg bg-amber-500 text-obsidian-950 font-bold text-xs uppercase">
+            Next Scenario →
+          </button>
+        `;
+        document.getElementById('nextGauntletQBtn')?.addEventListener('click', () => {
+          g.currentQ += 1;
+          g.answered = false;
+          renderGauntletQuiz();
+        });
+      }
+    });
+  });
+}
+
+// ============================================================================
+// 8. BLOG DOSSIERS & ARTICLE READER MODAL
+// ============================================================================
+function renderBlogSection() {
+  const grid = document.getElementById('blogGridContainer');
+  if (!grid) return;
+
+  const posts = AppState.activeBlogCat === 'all'
+    ? BLOG_POSTS
+    : BLOG_POSTS.filter(b => b.category === AppState.activeBlogCat);
+
+  grid.innerHTML = posts.map(post => `
+    <article class="card-surface rounded-2xl p-6 border border-white/10 flex flex-col justify-between space-y-4">
+      <div class="space-y-2.5">
+        <div class="flex items-center justify-between text-[11px] font-mono-code">
+          <span class="px-2.5 py-0.5 rounded bg-crimson-950 text-crimson-300 border border-crimson-500/30">${post.category}</span>
+          <span class="text-slate-400">${post.readTime}</span>
+        </div>
+        <h3 class="font-cinzel text-lg sm:text-xl font-bold text-white leading-snug">${post.title}</h3>
+        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">${post.excerpt}</p>
+      </div>
+      <div class="pt-4 border-t border-white/10 flex items-center justify-between">
+        <button type="button" data-read-blog="${post.id}" class="read-blog-btn text-xs font-bold uppercase tracking-wider text-amber-400 hover:text-amber-300">
+          Read Full Dossier →
+        </button>
+        <button type="button" data-save-blog="${post.id}" class="save-blog-btn text-xs font-mono-code text-slate-400 hover:text-white">
+          ★ Vault
+        </button>
+      </div>
+    </article>
+  `).join('');
+
+  grid.querySelectorAll('.read-blog-btn').forEach(btn => {
+    btn.addEventListener('click', () => openArticleModal(btn.getAttribute('data-read-blog')));
+  });
+  grid.querySelectorAll('.save-blog-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const p = BLOG_POSTS.find(x => x.id === btn.getAttribute('data-save-blog'));
+      if (p) saveItemToVault(`Dossier: ${p.title}`, 'BLOG DOSSIER');
+    });
+  });
+}
+
+function openArticleModal(blogId) {
+  const post = BLOG_POSTS.find(b => b.id === blogId);
+  if (!post) return;
+  AppState.currentArticleId = post.id;
+  const modal = document.getElementById('articleReaderModal');
+  const catEl = document.getElementById('modalArticleCategory');
+  const contentEl = document.getElementById('modalArticleContent');
+  if (!modal || !contentEl) return;
+
+  if (catEl) catEl.textContent = `${post.category} • ${post.readTime}`;
+  contentEl.innerHTML = `
+    <div class="text-xs font-mono-code text-amber-400">${post.date}</div>
+    <h2 class="font-cinzel text-2xl sm:text-3xl font-black text-white leading-tight">${post.title}</h2>
+    <div class="space-y-4 text-sm sm:text-base text-slate-200 leading-relaxed pt-2">
+      ${post.body.map(p => `<p>${p}</p>`).join('')}
+    </div>
+    <div class="mt-6 p-5 rounded-xl bg-obsidian-950 border border-amber-500/40 space-y-2">
+      <div class="font-cinzel font-bold text-amber-400 text-sm uppercase">Tactical Execution Checklist</div>
+      <ul class="space-y-1.5 text-xs sm:text-sm text-slate-300">
+        ${post.checklist.map(item => `<li class="flex items-start gap-2"><span class="text-crimson-400 font-bold">✓</span><span>${item}</span></li>`).join('')}
+      </ul>
+    </div>
+  `;
+  modal.classList.remove('hidden');
+}
+
+// ============================================================================
+// 9. COUNSELLING: SHEEP-TO-WOLF AUDIT, RETAINER TIERS & BOOKING
+// ============================================================================
+function renderAuditQuestions() {
+  const container = document.getElementById('auditQuestionsContainer');
+  if (!container) return;
+  container.innerHTML = AUDIT_QUESTIONS.map((q, idx) => `
+    <div class="p-3.5 rounded-xl bg-obsidian-950 border border-white/10 space-y-2">
+      <div class="text-xs sm:text-sm font-semibold text-white">${q.prompt}</div>
+      <select data-audit-q="${q.id}" aria-label="${q.prompt}" class="audit-select w-full px-3 py-2 rounded-lg bg-obsidian-900 border border-white/15 text-xs text-slate-200 focus:border-amber-400 focus:outline-none">
+        <option value="20" ${idx % 2 === 0 ? 'selected' : ''}>🐺 Wolf: ${q.wolfOption}</option>
+        <option value="10" ${idx % 2 === 1 ? 'selected' : ''}>🦊 Fox-Initiate: ${q.hybridOption}</option>
+        <option value="0">🐑 Sheep Costume: ${q.sheepOption}</option>
+      </select>
+    </div>
+  `).join('');
+}
+
+function calculateAuditQuotient() {
+  let total = 0;
+  document.querySelectorAll('.audit-select').forEach(sel => {
+    total += parseInt(sel.value, 10) || 0;
+  });
+  const scoreEl = document.getElementById('auditScoreDisplay');
+  const presEl = document.getElementById('auditPrescriptionText');
+  const headerRank = document.getElementById('headerMindsetRank');
+
+  let rank = 'SOVEREIGN WOLF (PQ ' + total + '/100)';
+  let pres = 'You already reject sentimental illusions and command structural leverage. Commission the Sovereign Apex retainer to engineer complete boardroom or institutional dominion.';
+  if (total < 45) {
+    rank = 'CONDITIONED SHEEP (PQ ' + total + '/100)';
+    pres = 'URGENT DEPROGRAMMING NEEDED: You are trading your autonomy for approval. Start with The Courtier tier and study Chapter XVII (Fear vs. Love) immediately.';
+  } else if (total < 80) {
+    rank = 'ASCENDANT FOX (PQ ' + total + '/100)';
+    pres = 'You recognize the game but occasionally hesitate to drop the hammer. Commission The Consigliere tier to master line-blurring and ruthless execution.';
+  }
+
+  if (scoreEl) scoreEl.textContent = rank;
+  if (presEl) presEl.textContent = pres;
+  if (headerRank) headerRank.textContent = rank;
+  showToast(`Predator Quotient Calculated: ${total}/100`);
+}
+
+function renderCounsellingTiers() {
+  const grid = document.getElementById('counsellingTiersGrid');
+  if (!grid) return;
+  grid.innerHTML = COUNSELLING_TIERS.map(t => {
+    const price = AppState.annualBilling ? t.annualPrice : t.monthlyPrice;
+    const borderCls = t.featured ? 'border-amber-400 ring-1 ring-amber-400/40' : 'border-white/10';
+    return `
+      <div class="card-surface rounded-2xl p-5 border ${borderCls} flex flex-col justify-between space-y-4">
+        <div class="space-y-2">
+          <span class="px-2 py-0.5 rounded bg-crimson-950 text-amber-300 font-mono-code text-[10px] uppercase">${t.badge}</span>
+          <h4 class="font-cinzel text-lg font-bold text-white">${t.name}</h4>
+          <div class="text-xs text-slate-400">${t.subtitle}</div>
+          <div class="pt-2">
+            <span class="font-cinzel text-2xl font-black text-amber-400">$${price}</span>
+            <span class="text-xs text-slate-400">/ month ${AppState.annualBilling ? '(billed annually)' : ''}</span>
+          </div>
+          <ul class="space-y-1.5 pt-2 text-xs text-slate-300">
+            ${t.features.map(f => `<li class="flex items-start gap-1.5"><span class="text-amber-400">•</span><span>${f}</span></li>`).join('')}
+          </ul>
+        </div>
+        <button type="button" data-select-tier="${t.name} ($${price})" class="select-tier-btn w-full py-2.5 rounded-xl bg-obsidian-800 hover:bg-amber-500 hover:text-obsidian-950 text-amber-300 font-bold text-xs uppercase tracking-wider border border-amber-500/30 transition">
+          Select ${t.name}
+        </button>
+      </div>
+    `;
+  }).join('');
+
+  grid.querySelectorAll('.select-tier-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const val = btn.getAttribute('data-select-tier');
+      const sel = document.getElementById('bookingTierSelect');
+      if (sel) {
+        sel.innerHTML = `<option value="${val}" selected>${val}</option>` + sel.innerHTML;
+      }
+      document.getElementById('bookingAlias')?.focus();
+      showToast(`Selected ${val} for War Room Booking.`);
+    });
+  });
+}
+
+// ============================================================================
+// 10. FAQ ACCORDION, VAULT & AUTHENTICATION
+// ============================================================================
+function renderFaqAccordion() {
+  const container = document.getElementById('faqAccordionContainer');
+  if (!container) return;
+  container.innerHTML = FAQ_ITEMS.map((item, i) => `
+    <div class="card-surface rounded-xl border border-white/10 overflow-hidden">
+      <button type="button" data-faq-idx="${i}" class="faq-toggle-btn w-full p-4 text-left flex items-center justify-between gap-4 text-xs sm:text-sm font-cinzel font-bold text-white hover:text-amber-400">
+        <span>${item.q}</span>
+        <span class="text-amber-400 font-mono-code">+</span>
+      </button>
+      <div id="faqBody-${i}" class="${i === 0 ? '' : 'hidden'} px-4 pb-4 text-xs sm:text-sm text-slate-300 leading-relaxed border-t border-white/5 pt-3">
+        ${item.a}
+      </div>
+    </div>
+  `).join('');
+
+  container.querySelectorAll('.faq-toggle-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const idx = btn.getAttribute('data-faq-idx');
+      const body = document.getElementById(`faqBody-${idx}`);
+      if (body) body.classList.toggle('hidden');
+    });
+  });
+}
+
+function saveItemToVault(title, category) {
+  if (!AppState.savedVaultItems.some(x => x.title === title)) {
+    AppState.savedVaultItems.unshift({ title, category, time: new Date().toLocaleTimeString() });
+    savePersistedState();
+  }
+  updateVaultUI();
+  showToast(`Saved "${title}" to your Sovereign Vault.`);
+}
+
+function updateVaultUI() {
+  const countEl = document.getElementById('savedVaultCount');
+  if (countEl) countEl.textContent = String(AppState.savedVaultItems.length + AppState.bookings.length);
+
+  const authBtnLabel = document.getElementById('authHeaderBtnLabel');
+  if (authBtnLabel) {
+    authBtnLabel.textContent = AppState.user ? `Citadel: ${AppState.user.alias}` : 'Inner Circle Login';
+  }
+
+  const userAliasEl = document.getElementById('vaultUserAlias');
+  const userEmailEl = document.getElementById('vaultUserEmail');
+  if (userAliasEl && userEmailEl) {
+    if (AppState.user) {
+      userAliasEl.textContent = AppState.user.alias;
+      userEmailEl.textContent = AppState.user.email;
+    } else {
+      userAliasEl.textContent = 'Unauthenticated Initiate (Local Session)';
+      userEmailEl.textContent = 'Sign in above to bind your encrypted dossier archive';
+    }
+  }
+
+  const listEl = document.getElementById('vaultSavedList');
+  if (listEl) {
+    if (AppState.savedVaultItems.length === 0) {
+      listEl.innerHTML = '<div class="text-slate-500">No dossiers or laws saved yet. Click "★ Save to Vault" on any Arena, Maxim, or Blog post.</div>';
+    } else {
+      listEl.innerHTML = AppState.savedVaultItems.map((item, idx) => `
+        <div class="p-2.5 rounded-lg bg-obsidian-950 border border-white/10 flex items-center justify-between gap-2">
+          <div>
+            <span class="text-[10px] font-mono-code text-amber-400 block">${item.category}</span>
+            <span class="text-white font-medium">${item.title}</span>
+          </div>
+          <button type="button" data-remove-vault="${idx}" class="remove-vault-btn text-slate-400 hover:text-crimson-400 text-xs px-2">✕</button>
+        </div>
+      `).join('');
+      listEl.querySelectorAll('.remove-vault-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const i = parseInt(btn.getAttribute('data-remove-vault'), 10);
+          AppState.savedVaultItems.splice(i, 1);
+          savePersistedState();
+          updateVaultUI();
+        });
+      });
+    }
+  }
+
+  const bookEl = document.getElementById('vaultBookingsList');
+  if (bookEl) {
+    if (AppState.bookings.length === 0) {
+      bookEl.innerHTML = '<div class="text-slate-500">No War Room briefings commissioned yet.</div>';
+    } else {
+      bookEl.innerHTML = AppState.bookings.map(b => `
+        <div class="p-2.5 rounded-lg bg-obsidian-950 border border-emerald-500/30 text-xs">
+          <div class="font-mono-code text-emerald-400">CIPHER #${b.code} • ${b.tier}</div>
+          <div class="text-white font-semibold">${b.alias} — ${b.arena}</div>
+        </div>
+      `).join('');
+    }
+  }
+}
+
+// ============================================================================
+// 11. MASTER INITIALIZATION & EVENT LISTENERS
+// ============================================================================
+window.addEventListener('DOMContentLoaded', () => {
+  loadPersistedState();
+
+  // Render all interactive views
+  renderPyramidVisualizer();
+  renderArenasSection();
+  updateMachiavelliTelemetry();
+  renderMaximsGrid();
+  initGambitGame();
+  renderIntrigueEngine();
+  renderGauntletQuiz();
+  renderBlogSection();
+  renderAuditQuestions();
+  renderCounsellingTiers();
+  renderFaqAccordion();
+  updateVaultUI();
+
+  // Mobile Menu Toggle
+  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+  const mobileNavDrawer = document.getElementById('mobileNavDrawer');
+  mobileMenuBtn?.addEventListener('click', () => {
+    mobileNavDrawer?.classList.toggle('hidden');
+  });
+  document.querySelectorAll('.mobile-nav-link').forEach(link => {
+    link.addEventListener('click', () => mobileNavDrawer?.classList.add('hidden'));
+  });
+
+  // Header Search Jump & Ctrl+K Shortcut
+  document.getElementById('headerSearchBtn')?.addEventListener('click', () => {
+    document.getElementById('centralSearchAnchor')?.scrollIntoView({ behavior: 'smooth' });
+    setTimeout(() => document.getElementById('centralSearchInput')?.focus(), 350);
+  });
+  window.addEventListener('keydown', (e) => {
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+      e.preventDefault();
+      document.getElementById('centralSearchAnchor')?.scrollIntoView({ behavior: 'smooth' });
+      document.getElementById('centralSearchInput')?.focus();
+    }
+  });
+
+  // Hero Audit Quick Jump
+  document.getElementById('heroQuickAuditBtn')?.addEventListener('click', () => {
+    document.getElementById('counsellingSection')?.scrollIntoView({ behavior: 'smooth' });
+  });
+
+  // Central Search Bar Listeners
+  document.getElementById('centralSearchInput')?.addEventListener('input', executeCentralSearch);
+  document.getElementById('centralSearchCategory')?.addEventListener('change', executeCentralSearch);
+  document.getElementById('clearCentralSearchBtn')?.addEventListener('click', () => {
+    const inp = document.getElementById('centralSearchInput');
+    if (inp) inp.value = '';
+    executeCentralSearch();
+  });
+  document.querySelectorAll('.search-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      const inp = document.getElementById('centralSearchInput');
+      if (inp) {
+        inp.value = chip.getAttribute('data-search-tag') || '';
+        executeCentralSearch();
+      }
+    });
+  });
+
+  // Machiavelli's Corner Telemetry Sliders
+  ['sliderFear', 'sliderLove', 'sliderBlur', 'sliderDep', 'sliderFox'].forEach(id => {
+    document.getElementById(id)?.addEventListener('input', updateMachiavelliTelemetry);
+  });
+  document.getElementById('resetTelemetryBtn')?.addEventListener('click', () => {
+    document.getElementById('sliderFear').value = '85';
+    document.getElementById('sliderLove').value = '25';
+    document.getElementById('sliderBlur').value = '90';
+    document.getElementById('sliderDep').value = '80';
+    document.getElementById('sliderFox').value = '88';
+    updateMachiavelliTelemetry();
+    showToast('Restored Optimal Florentine Sovereign Equilibrium.');
+  });
+
+  // Maxim Category Filters
+  document.querySelectorAll('.maxim-filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      AppState.activeMaximFilter = btn.getAttribute('data-maxim-filter') || 'all';
+      document.querySelectorAll('.maxim-filter-btn').forEach(b => {
+        const act = b.getAttribute('data-maxim-filter') === AppState.activeMaximFilter;
+        b.className = act
+          ? 'maxim-filter-btn px-3 py-1.5 rounded-lg bg-crimson-600 text-white text-xs font-semibold'
+          : 'maxim-filter-btn px-3 py-1.5 rounded-lg bg-obsidian-800 text-slate-300 hover:text-white text-xs';
+      });
+      renderMaximsGrid();
+    });
+  });
+
+  // Game Switcher Tabs
+  document.querySelectorAll('.game-tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => switchGameTab(btn.getAttribute('data-game-tab')));
+  });
+
+  // Game 1: The Sovereign's Gambit Controls (Canvas Click, D-Pad, Keyboard, Decrees, Resize)
+  const canvas = document.getElementById('sovereignGambitCanvas');
+  canvas?.addEventListener('click', (e) => {
+    const rect = canvas.getBoundingClientRect();
+    const clickX = Math.floor(((e.clientX - rect.left) / rect.width) * AppState.gambit.gridSize);
+    const clickY = Math.floor(((e.clientY - rect.top) / rect.height) * AppState.gambit.gridSize);
+    const dx = Math.max(-1, Math.min(1, clickX - AppState.gambit.player.x));
+    const dy = Math.max(-1, Math.min(1, clickY - AppState.gambit.player.y));
+    stepGambitTurn(dx, dy);
+  });
+
+  document.querySelectorAll('.gambit-dir-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const dir = btn.getAttribute('data-gambit-dir');
+      if (dir === 'up') stepGambitTurn(0, -1);
+      else if (dir === 'down') stepGambitTurn(0, 1);
+      else if (dir === 'left') stepGambitTurn(-1, 0);
+      else if (dir === 'right') stepGambitTurn(1, 0);
+      else stepGambitTurn(0, 0);
+    });
+  });
+
+  document.getElementById('gambitFoxTrapBtn')?.addEventListener('click', deployFoxSnare);
+  document.getElementById('gambitLionDecreeBtn')?.addEventListener('click', unleashLionPurge);
+  document.getElementById('gambitRestartBtn')?.addEventListener('click', initGambitGame);
+  document.getElementById('gambitSoundToggleBtn')?.addEventListener('click', (e) => {
+    AppState.gambit.soundEnabled = !AppState.gambit.soundEnabled;
+    e.currentTarget.textContent = AppState.gambit.soundEnabled ? '🔊 Audio: ON' : '🔇 Audio: OFF';
+  });
+
+  window.addEventListener('keydown', (e) => {
+    if (AppState.activeGameTab !== 'gambit') return;
+    const tag = (document.activeElement?.tagName || '').toLowerCase();
+    if (tag === 'input' || tag === 'textarea' || tag === 'select') return;
+    if (['ArrowUp', 'w', 'W'].includes(e.key)) { e.preventDefault(); stepGambitTurn(0, -1); }
+    else if (['ArrowDown', 's', 'S'].includes(e.key)) { e.preventDefault(); stepGambitTurn(0, 1); }
+    else if (['ArrowLeft', 'a', 'A'].includes(e.key)) { e.preventDefault(); stepGambitTurn(-1, 0); }
+    else if (['ArrowRight', 'd', 'D'].includes(e.key)) { e.preventDefault(); stepGambitTurn(1, 0); }
+    else if (e.key === '1') { e.preventDefault(); deployFoxSnare(); }
+    else if (e.key === '2') { e.preventDefault(); unleashLionPurge(); }
+  });
+
+  window.addEventListener('resize', resizeAndDrawGambitCanvas);
+  document.getElementById('restartIntrigueBtn')?.addEventListener('click', resetIntrigueGame);
+
+  // Blog Category Filters & Article Modal
+  document.querySelectorAll('.blog-cat-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      AppState.activeBlogCat = btn.getAttribute('data-blog-cat') || 'all';
+      document.querySelectorAll('.blog-cat-btn').forEach(b => {
+        const act = b.getAttribute('data-blog-cat') === AppState.activeBlogCat;
+        b.className = act
+          ? 'blog-cat-btn px-3 py-1.5 rounded-lg bg-amber-500 text-obsidian-950 font-bold text-xs'
+          : 'blog-cat-btn px-3 py-1.5 rounded-lg bg-obsidian-800 text-slate-300 hover:text-white text-xs';
+      });
+      renderBlogSection();
+    });
+  });
+
+  document.getElementById('closeArticleModalBtn')?.addEventListener('click', () => {
+    document.getElementById('articleReaderModal')?.classList.add('hidden');
+  });
+  document.getElementById('modalBookmarkBtn')?.addEventListener('click', () => {
+    const post = BLOG_POSTS.find(b => b.id === AppState.currentArticleId);
+    if (post) saveItemToVault(`Dossier: ${post.title}`, 'BLOG DOSSIER');
+  });
+
+  // Counselling Audit, Billing Toggle & Booking Form
+  document.getElementById('calculateAuditBtn')?.addEventListener('click', calculateAuditQuotient);
+  document.getElementById('billingToggleBtn')?.addEventListener('click', (e) => {
+    AppState.annualBilling = !AppState.annualBilling;
+    e.currentTarget.textContent = AppState.annualBilling
+      ? 'Annual Billing (-20% Active)'
+      : 'Monthly (Switch to Annual -20%)';
+    renderCounsellingTiers();
+  });
+
+  document.getElementById('counsellingBookingForm')?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const alias = document.getElementById('bookingAlias')?.value.trim() || 'Operative';
+    const arena = document.getElementById('bookingArena')?.value || 'Corporate';
+    const tier = document.getElementById('bookingTierSelect')?.value || 'The Consigliere';
+    const code = 'MCV-' + Math.floor(100000 + Math.random() * 900000);
+
+    AppState.bookings.unshift({ alias, arena, tier, code });
+    savePersistedState();
+    updateVaultUI();
+
+    const conf = document.getElementById('bookingConfirmationBox');
+    if (conf) {
+      conf.classList.remove('hidden');
+      conf.innerHTML = `
+        <div class="font-mono-code font-bold text-emerald-300">✓ WAR ROOM DOSSIER LOCKED — CIPHER #${code}</div>
+        <div>Operative <strong>${alias}</strong> scheduled for <strong>${arena}</strong> under <strong>${tier}</strong>. Saved to your Inner Circle Vault.</div>
+      `;
+    }
+    showToast(`War Room Briefing Confirmed (#${code})`);
+    e.target.reset();
+  });
+
+  // Contact Dispatch Form
+  document.getElementById('contactDispatchForm')?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('contactName')?.value.trim() || 'Envoy';
+    const subj = document.getElementById('contactSubject')?.value || 'General';
+    const urg = document.getElementById('contactUrgency')?.value || 'Standard';
+    const stamp = new Date().toLocaleTimeString();
+
+    AppState.dispatches.unshift({ name, subj, urg, stamp });
+    const logEl = document.getElementById('contactDispatchLog');
+    if (logEl) {
+      logEl.innerHTML = AppState.dispatches.map(d => `
+        <div class="p-2 rounded bg-obsidian-950 border border-white/10 text-slate-300">
+          <span class="text-amber-400 font-mono-code">[${d.stamp}]</span> <strong>${d.name}</strong> — ${d.subj} (${d.urg})
+        </div>
+      `).join('');
+    }
+    showToast('Encrypted Dispatch Transmitted to the Chancery.');
+    e.target.reset();
+  });
+
+  // Auth & Vault Modal Controls
+  const authModal = document.getElementById('authVaultModal');
+  document.getElementById('openAuthModalBtn')?.addEventListener('click', () => authModal?.classList.remove('hidden'));
+  document.getElementById('openVaultQuickBtn')?.addEventListener('click', () => authModal?.classList.remove('hidden'));
+  document.getElementById('closeAuthModalBtn')?.addEventListener('click', () => authModal?.classList.add('hidden'));
+
+  document.getElementById('tabLoginBtn')?.addEventListener('click', () => {
+    document.getElementById('registerAliasField')?.classList.add('hidden');
+  });
+  document.getElementById('tabRegisterBtn')?.addEventListener('click', () => {
+    document.getElementById('registerAliasField')?.classList.remove('hidden');
+  });
+
+  document.getElementById('authForm')?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = document.getElementById('authEmailInput')?.value.trim() || 'sovereign@machiavellify.io';
+    const aliasInput = document.getElementById('authAliasInput')?.value.trim();
+    const alias = aliasInput || email.split('@')[0].toUpperCase();
+    AppState.user = { alias, email };
+    savePersistedState();
+    updateVaultUI();
+    showToast(`Welcome to the Inner Circle, ${alias}.`);
+  });
+
+  document.getElementById('demoSovereignLoginBtn')?.addEventListener('click', () => {
+    AppState.user = { alias: 'PRINCE NICCOLÒ (APEX)', email: 'prince@machiavellify.io' };
+    if (AppState.savedVaultItems.length === 0) {
+      AppState.savedVaultItems.push(
+        { title: 'Chapter XVII: Better to Be Feared Than Loved', category: 'FLORENTINE MAXIM', time: '15:13' },
+        { title: 'Corporate Office Warfare Playbook', category: 'ARENA PLAYBOOK', time: '15:14' }
+      );
+    }
+    savePersistedState();
+    updateVaultUI();
+    showToast('Instant Sovereign Access Activated.');
+  });
+
+  document.getElementById('logoutOperativeBtn')?.addEventListener('click', () => {
+    AppState.user = null;
+    savePersistedState();
+    updateVaultUI();
+    showToast('Operative Session Locked.');
+  });
+});
+
+  </script>
+</body>
+</html>

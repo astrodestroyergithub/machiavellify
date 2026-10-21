@@ -1,0 +1,8 @@
+{
+  "name": "Machiavellify — The Apex Architecture of Power",
+  "short_name": "Machiavellify",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#070709",
+  "theme_color": "#e11d48"
+}
