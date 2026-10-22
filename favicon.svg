@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" fill="none">
+  <defs>
+    <!-- Obsidian Citadel Background Gradient -->
+    <radialGradient id="bgObsidian" cx="50%" cy="35%" r="70%">
+      <stop offset="0%" stop-color="#1a1018" />
+      <stop offset="65%" stop-color="#0a0b10" />
+      <stop offset="100%" stop-color="#050507" />
+    </radialGradient>
+
+    <!-- Sovereign Gold Metallic Gradient -->
+    <linearGradient id="sovereignGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fde68a" />
+      <stop offset="45%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#b45309" />
+    </linearGradient>
+
+    <!-- Imperial Crimson Gradient -->
+    <linearGradient id="imperialCrimson" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#fb7185" />
+      <stop offset="35%" stop-color="#e11d48" />
+      <stop offset="100%" stop-color="#881337" />
+    </linearGradient>
+
+    <!-- Subtle Drop Shadow for High Tab Contrast -->
+    <filter id="crestGlow" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="1.5" stdDeviation="1.5" flood-color="#000000" flood-opacity="0.75" />
+    </filter>
+  </defs>
+
+  <!-- Outer Rounded Shield / Squircle Base (High visibility on both light & dark browser tabs) -->
+  <rect x="3" y="3" width="58" height="58" rx="14" fill="url(#bgObsidian)" stroke="url(#sovereignGold)" stroke-width="2.5" />
+
+  <!-- Subtle Inner Crimson Pyramid / Octagonal Frame -->
+  <polygon points="32,8 54,22 50,51 32,57 14,51 10,22" fill="#2a060b" fill-opacity="0.55" stroke="#e11d48" stroke-width="1.2" stroke-opacity="0.45" />
+
+  <!-- Crowned Predator "M" (Wolf/Fox Ears + Sovereign Crown + Twin Blades) -->
+  <g filter="url(#crestGlow)">
+    <!-- Main Geometric Wolf-Crown "M" Monogram -->
+    <path
+      d="M13 48 L15 16 L25.5 30 L32 13 L38.5 30 L49 16 L51 48 L43.5 48 L42.5 28.5 L32 43.5 L21.5 28.5 L20.5 48 Z"
+      fill="url(#sovereignGold)"
+    />
+
+    <!-- Central Crimson Dagger / Apex Pyramid Spear -->
+    <polygon points="32,9 36.2,23 32,54 27.8,23" fill="url(#imperialCrimson)" />
+
+    <!-- All-Seeing Sovereign Diamond Eye at the Center -->
+    <polygon points="32,21 35,25.5 32,30 29,25.5" fill="#fef3c7" />
+    <circle cx="32" cy="25.5" r="1.3" fill="#070709" />
+  </g>
+</svg>
